@@ -2,6 +2,8 @@
 
 #define WAKEUP_REASON 0
 #define PERSIST_KEY_WAKEUP_ID 42
+#define number_pills 10
+#define medication "viagra"
 
 static Window *s_main_window;
 static TextLayer *s_output_layer;
@@ -24,11 +26,11 @@ static void check_wakeup() {
     // There is a wakeup scheduled soon
     time_t timestamp = 0;
     wakeup_query(s_wakeup_id, &timestamp);
-    int seconds_remaining = timestamp - time(NULL);
+    //int seconds_remaining = timestamp - time(NULL);
 
     // Show how many seconds to go
     static char s_buffer[64];
-    snprintf(s_buffer, sizeof(s_buffer), "The event is already scheduled for %d seconds from now!", seconds_remaining);
+    snprintf(s_buffer, sizeof(s_buffer), "Take %d %s for in blank seconds from now!", number_pills, medication);
     text_layer_set_text(s_output_layer, s_buffer);
   }
 }
