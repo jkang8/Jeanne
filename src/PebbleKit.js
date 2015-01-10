@@ -67,6 +67,31 @@ function getMedication() {
       // responseText contains a JSON object with weather info
       var json = JSON.parse(responseText);
       console.log("Medication is " + JSON.stringify(json));
+	  
+	  var amount = json.amount;
+	  console.log("Amount is : + amount);
+	  
+      var drug = json.name;
+      console.log("Drug is " + drug);
+
+      var time = json.time;      
+      console.log("Conditions are " + time);
+      
+      // Assemble dictionary using our keys
+      var dictionary = {
+        "KEY_AMOUNT": amount,
+        "KEY_DRUG": drug,
+		"KEY_TIME": time 
+      };
+
+      // Send to Pebble
+      Pebble.sendAppMessage(dictionary,
+        function(e) {
+          console.log("Schedule info sent to Pebble successfully!");
+        },
+        function(e) {
+          console.log("Error sending schedule info to Pebble!");
+        }
     }      
   );
 }
