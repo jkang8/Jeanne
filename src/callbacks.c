@@ -1,5 +1,6 @@
 #include <pebble.h>
 #include <callbacks.h>
+#include <recieve.h>
 
 void inbox_received_callback(DictionaryIterator *iterator, void *context) {
   // Read first item
@@ -8,8 +9,7 @@ void inbox_received_callback(DictionaryIterator *iterator, void *context) {
   // For all items
   while(t != NULL) {
     // Which key was received?
-    switch(t->key) {
-    }
+    receive_key_value(t);
 
     // Look for next item
     t = dict_read_next(iterator);
