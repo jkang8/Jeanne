@@ -11,7 +11,7 @@ static WakeupId s_wakeup_id;
 static void wakeup_handler(WakeupId id, int32_t reason) {
   // The app has woken!
   text_layer_set_text(s_output_layer, "Wakey wakey!");
-
+  vibes_long_pulse();
   // Delete the ID
   persist_delete(PERSIST_KEY_WAKEUP_ID);
 }
