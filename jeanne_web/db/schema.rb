@@ -11,12 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150110015206) do
+ActiveRecord::Schema.define(version: 20150110021745) do
 
   create_table "caregivers", force: true do |t|
     t.string   "name"
     t.string   "username"
+    t.string   "password"
     t.string   "email"
+    t.integer  "patient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,10 +30,28 @@ ActiveRecord::Schema.define(version: 20150110015206) do
     t.datetime "updated_at"
   end
 
+  create_table "locations", force: true do |t|
+    t.integer  "patient_id"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "patients", force: true do |t|
     t.string   "name"
     t.string   "username"
     t.date     "birthdate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reminders", force: true do |t|
+    t.string   "type"
+    t.string   "description"
+    t.string   "frequency"
+    t.integer  "patient_id"
+    t.time     "time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
