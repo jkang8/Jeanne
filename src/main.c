@@ -39,7 +39,7 @@ static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
   //Check the event is not already scheduled
   if (!wakeup_query(s_wakeup_id, NULL)) {
     // Current time + 5 seconds
-    time_t future_time = time(NULL) + 5;
+    time_t future_time = clock_to_timestamp(FRIDAY, 23, 18);
 
     // Schedule wakeup event and keep the WakeupId
     s_wakeup_id = wakeup_schedule(future_time, WAKEUP_REASON, true);
