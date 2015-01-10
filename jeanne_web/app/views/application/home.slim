@@ -1,5 +1,4 @@
 
-
 #left-content
 	= render Patient.first
 
@@ -8,17 +7,21 @@
 	ul#main-menu
 
 
-		li#medication
+		li.menu-item
 			= render "partials/menu_item", {title: 'Medication', icon: 'fa-medkit'}
-			.menu-item
+			.menu-content
+				ul#medication-list
+			        - @patient.medications.each do | med |
+			        	= render med
+			        = render Medication.new
 
-		li#messages
+		li.menu-item
 			= render "partials/menu_item", {title: 'Messages', icon: 'fa-comment' }
-			.menu-item
+			.menu-content
 
-		li#movement
+		li.menu-item
 			= render "partials/menu_item", {title: 'Movement', icon: 'fa-arrow-right'}
-			.menu-item
+			.menu-content
 			
 
 
@@ -27,7 +30,7 @@ coffee:
 		minimize = $(this).find('.minimize')
 		value = minimize.attr('value') != 'true' ? 'true' : 'false'
 		minimize.attr('value', value)
-		minimize.closest('li').find('.menu-item').
+		minimize.closest('li').find('.menu-content').
 			slideToggle()
 
 	$('.patient').click ->
@@ -36,3 +39,5 @@ coffee:
 			$(this).removeClass('spin')
 		, 1000
 
+
+	$('#medication_times').timepicker()

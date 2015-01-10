@@ -1,0 +1,148 @@
+@import "standards";
+
+
+
+.medication {
+	box-sizing: border-box;
+	padding: 5px;
+	padding-left: 10px;
+
+	.item {
+		font-size: 14pt;
+		font-weight: 300;
+		box-sizing: border-box;
+		float: left;
+		height: 100%;
+		margin-right: 6px;
+		// line-height: 100%;
+	}
+
+	.value {
+		color: $peach;
+	}
+
+	::-webkit-input-placeholder {
+	   color: white;
+	}
+
+
+	// .label {
+	// 	padding: 5px;
+	// }
+
+	// .value {
+	// 	color: $peach;
+	// 	padding: 5px;
+	// 	font-weight: 300;
+	// }
+
+	// span {
+	// 	margin-left: 2px;
+	// 	margin-right: 2px;
+	// }
+
+    // font-weight: 300;
+    // font-size: 17px;
+
+    input[type='text']{
+    	margin-top: 9px;
+    	height: 100%;
+        background: none;
+        color: white;
+        border: 1px solid $peach;
+
+        &#medication_times {
+            width: 70px;
+        }
+    }
+
+    input[type=checkbox] {
+    	display: none;
+    }
+
+	#week-box label {
+		color: $blue;
+		line-height: 25px;
+		display: inline-block;
+		text-align: center;
+		width: 25px;
+		height: 25px;
+		background: white;
+		font-weight: 100;
+		transition: all 0.2s;
+		// border: 1px solid $peach;
+
+		&:hover {
+    		background: rgba(white, 0.75);
+    		cursor: pointer;    			
+		}
+
+	}
+
+	input:checked + label {
+		background: $peach !important; 
+		color: white !important;
+	}
+
+	[for=all] {
+		width: 40px;
+		margin-left: 3px;
+		margin-right: 3px;
+	}
+
+
+
+  //   #week-box {
+		// // border: 1px solid rgba(white,0.3);
+
+
+
+
+  //   }
+
+    // #time-list {
+    // 	height: 100%;
+
+	   //  .value {
+	   //  	border-radius: 1px;
+	   //  	background: white;
+	   //  	color: $blue;
+	   //  	margin-right: 3px;
+	   //  }
+    // }
+
+
+    // #day-list .value {
+    // 	margin-right: 3px;
+    // }
+
+    .button-list .label {
+    	// line-height: 50%;
+
+    	float: right;
+    	padding: 5px;
+    	margin-left: 5px;
+    	font-size: 20pt;
+    	opacity: 0.5;
+    	cursor: pointer;
+
+    	&:hover {
+    		opacity: 1.0;
+    	}
+    }
+
+    #update-form {
+    	display: none
+    }
+
+    &#med- {
+    	#update-form {
+	    	display: block;
+    	}
+    	#display {
+	    	display: none;
+    	}
+    }
+}
+
+

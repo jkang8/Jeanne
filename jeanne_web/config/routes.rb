@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'today' => 'patients#today'
 
   resources 'patients', :only => [:new, :create]
+  resources 'medications'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -31,6 +31,8 @@ class ApplicationController < ActionController::Base
         if not @user
             redirect_to ''
         end
+
+        @patient = user.patient
     end
 
     def clear

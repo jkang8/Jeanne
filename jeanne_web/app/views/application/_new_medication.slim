@@ -1,0 +1,37 @@
+
+
+li
+    #medication-form
+        = form_for Medication.new do |f|
+
+            span.label Take   
+            = f.text_field :name, {placeholder: 'Medication' }
+
+
+            / select#time-selector
+                / option#day day
+                / option#week week
+            span.label  at 
+            = f.text_field :times, {placeholder: 'Time'}
+            span.label   on 
+
+            span#week-box
+                input type='checkbox' id='mon'
+                label for='mon' M
+                input type='checkbox' id='tues'
+                label for='tues' T
+                input type='checkbox' id='wed'
+                label for='wed' W
+                input type='checkbox' id='thurs'
+                label for='thurs' Th 
+                input type='checkbox' id='fri'
+                label for='fri' F
+                input type='checkbox' id='sat'
+                label for='sat' S
+                input type='checkbox' id='sun'
+                label for='sun' Su 
+
+                input type='checkbox' id='all' 
+                label for='all' All
+
+            = f.submit

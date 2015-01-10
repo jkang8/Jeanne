@@ -1,0 +1,62 @@
+
+
+
+- id = medication.id
+li.medication id='med-#{id}'
+	#update-form
+	    = form_for medication do |f|
+	    	= f.hidden_field :id
+	        .item.label Take   
+	        = f.text_field :name, {placeholder: 'Medication', class: 'item' }
+
+
+	        / select#time-selector
+	            / option#day day
+	            / option#week week
+	        .item.label  at 
+	        = f.text_field :times, {placeholder: 'Time', class: 'item'}
+	        .item.label   on 
+
+	        .item#week-box
+	            input type='checkbox' id='mon'
+	            label for='mon' M
+	            input type='checkbox' id='tues'
+	            label for='tues' T
+	            input type='checkbox' id='wed'
+	            label for='wed' W
+	            input type='checkbox' id='thurs'
+	            label for='thurs' Th 
+	            input type='checkbox' id='fri'
+	            label for='fri' F
+	            input type='checkbox' id='sat'
+	            label for='sat' S
+	            input type='checkbox' id='sun'
+	            label for='sun' Su 
+
+	            input type='checkbox' id='all' 
+	            label for='all' All
+
+	        = f.submit
+	- if id
+		#display
+			.item.label Take 
+			.item.value #{medication.amount} 
+			.item.value #{medication.name} 
+			.item.label at 
+			.item#time-list
+				- medication.time_array.each do | time | 
+					.item.value #{time} 
+			- if !medication.everyday?
+				.item.value every day
+			- else
+				.item.label On 
+				.item#day-list
+					- medication.week_days.each do | day | 
+						.item.value #{day} 
+
+			span.button-list
+				span.label.fa.fa-times-circle
+				span.label.fa.fa-pencil
+				/ span.button#history View
+				/ span.button#edit Edit
+			.clear

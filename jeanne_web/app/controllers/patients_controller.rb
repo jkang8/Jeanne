@@ -24,7 +24,7 @@ class PatientsController < ApplicationController
 			end
 		end
 
-		render json: times
+		render json: times.first
 	end
 
 end
