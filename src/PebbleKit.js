@@ -35,10 +35,10 @@ function locationSuccess(pos) {
       // Send to Pebble
       Pebble.sendAppMessage(dictionary,
         function(e) {
-          console.log("Jeanne: Weather info sent to Pebble successfully!");
+          console.log("Weather info sent to Pebble successfully!");
         },
         function(e) {
-          console.log("Jeanne: Error sending weather info to Pebble!");
+          console.log("Error sending weather info to Pebble!");
         }
       );
     }      
@@ -46,7 +46,7 @@ function locationSuccess(pos) {
 }
 
 function locationError(err) {
-  console.log("Jeanne: Error requesting location!");
+  console.log("Error requesting location!");
 }
 
 function getWeather() {
@@ -57,20 +57,36 @@ function getWeather() {
   );
 }
 
+function getMedication() {
+  // Construct URL
+  var url = "http://cara.rowealex.com/today";
+
+  // Send request to OpenWeatherMap
+  xhrRequest(url, 'GET', 
+    function(responseText) {
+      // responseText contains a JSON object with weather info
+      var json = JSON.parse(responseText);
+      console.log("Medication is " + JSON.stringify(json));
+    }      
+  );
+}
+
 // Listen for when the watchface is opened
 Pebble.addEventListener('ready', 
   function(e) {
-    console.log("Jeanne: PebbleKit JS ready!");
+    console.log("PebbleKit JS ready!");
 
     // Get the initial weather
-    getWeather();
+    //getWeather();
+    getMedication();
   }
 );
 
 // Listen for when an AppMessage is received
 Pebble.addEventListener('appmessage',
   function(e) {
-    console.log("Jeanne: AppMessage received!");
-    getWeather();
+    console.log("AppMessage received!");
+    //getWeather();
+    getMedication();
   }                     
 );
