@@ -1,34 +1,60 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+    # Prevent CSRF attacks by raising an exception.
+    # For APIs, you may want to use :null_session instead.
+    protect_from_forgery with: :exception
 
-  def login
-  end
+    def login
 
-  def init
-  	if Caregivers.all.count > 1
-	  	Caregivers.first.destroy
-		Patients.first.destroy
-	end
+        if params
+            @username = params[:username]
+            @password = params[:password]
+            user = Caregivers.find_by_username(@username)
+            if user and user.password == @password
+                session[:user] = user.username
+            end
+        end
 
-  	caregiver = Caregivers.new
-  	caregiver.username = 'Alex'
-  	caregiver.password = '1'
-  	caregiver.email= 'aprowe@ucsc.edu'
+        if session[:user]
+            redirect_to '/home'
+        end
+    end
 
-  	patient = Patients.new
-  	patient.name = "Cara Jeanne"
-  	patient.birthdate = '12/12/1930'.to_date
-  	patient.save
-  	caregiver.patient_id = patient.id
+    def home
+        @user = user
+    end
 
-	logger.debug(caregiver.patient.id)
+    def clear
+        session[:user] = nil
+        redirect_to ''
+    end
 
-  	caregiver.save
 
-  	redirect_to ''
+    def init
+        if Caregivers.all.count > 1
+            Caregivers.first.destroy
+            Patients.first.destroy
+        end
 
-  end
+        caregiver = Caregivers.new
+        caregiver.username = 'Alex'
+        caregiver.password = '1'
+        caregiver.email= 'aprowe@ucsc.edu'
+
+        patient = Patients.new
+        patient.name = "Cara Jeanne"
+        patient.birthdate = '12/12/1930'.to_date
+        patient.save
+        caregiver.patient_id = patient.id
+
+        logger.debug(caregiver.patient.id)
+
+        caregiver.save
+
+        redirect_to ''
+    end
+
+    def user
+        return Caregivers.find_by_username session[:user]
+    end
 
 end

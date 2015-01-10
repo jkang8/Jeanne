@@ -1,0 +1,10 @@
+
+
+#login-box
+		= form_tag("", method: "get") do
+			.row
+				= text_field_tag :username, @username
+			.row
+				= password_field_tag :password
+			.row
+				= submit_tag ("Login")
