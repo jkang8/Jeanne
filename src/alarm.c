@@ -18,17 +18,17 @@ void wakeup_handler(WakeupId id, int32_t reason) {
 
 void check_wakeup() {
   // Get the ID
-  s_wakeup_id = persist_read_int(PERSIST_KEY_TIME);
-  
+  s_wakeup_id = persist_read_int(PERSIST_KEY_WAKEUP_ID);
+
   if (s_wakeup_id > 0) {
     // There is a wakeup scheduled soon
     time_t timestamp = 0;
     wakeup_query(s_wakeup_id, &timestamp);
-    float hours_remaining = (timestamp - time(NULL))/3600;
+    //int seconds_remaining = timestamp - time(NULL);
 
     // Show how many seconds to go
     static char s_buffer[64];
-    snprintf(s_buffer, sizeof(s_buffer), "Take %d %s in %f hours!", number_pills, medication, hours_remaining);
+    snprintf(s_buffer, sizeof(s_buffer), "Take %d %s for in blank seconds from now!", number_pills, medication);
     text_layer_set_text(s_output_layer, s_buffer);
   }
 }

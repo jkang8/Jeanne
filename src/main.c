@@ -1,9 +1,14 @@
 #include <pebble.h>
 #include <alarm.h>
-#include <recieve.h>
-
+#include <callbacks.h>
+#include <TickHandler.h>
+  
+#define KEY_TEMPERATURE 0
+#define KEY_CONDITIONS 1
+  
 Window *s_main_window;
 TextLayer *s_output_layer;
+
 
 static void main_window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
@@ -12,9 +17,6 @@ static void main_window_load(Window *window) {
   // Create output TextLayer
   s_output_layer = text_layer_create(GRect(0, 0, window_bounds.size.w, window_bounds.size.h));
   text_layer_set_text_alignment(s_output_layer, GTextAlignmentCenter);
-  int time = persist_read_int(PERSIST_KEY_TIME);
-  char buffer[64];
-  persist_read_string(PERSIST_KEY_DRUG, buffer, sizeof(buffer));
   text_layer_set_text(s_output_layer, "Press SELECT to schedule a Wakeup.");
   layer_add_child(window_layer, text_layer_get_layer(s_output_layer));
 }
@@ -50,6 +52,22 @@ static void init(void) {
     // Check whether a wakeup will occur soon
     check_wakeup();
   }
+  
+  // Register with TickTimerService to poll the server
+  tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
+  
+   //
+   // Set up message passing to server
+   //
+  
+   // Register callbacks
+  app_message_register_inbox_received(inbox_received_callback);
+  app_message_register_inbox_dropped(inbox_dropped_callback);
+  app_message_register_outbox_failed(outbox_failed_callback);
+  app_message_register_outbox_sent(outbox_sent_callback);
+  
+  // Open AppMessage
+  app_message_open(app_message_inbox_size_maximum(), app_message_outbox_size_maximum());
 }
 
 static void deinit(void) {
