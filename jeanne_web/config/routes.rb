@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'logout' => 'application#logout'
 
   get 'today' => 'patients#today'
-
+  resources 'medications'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
