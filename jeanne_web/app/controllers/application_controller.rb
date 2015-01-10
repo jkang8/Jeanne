@@ -77,10 +77,7 @@ class ApplicationController < ActionController::Base
         medication.amount = 2
         medication.save
 
-
-
         logger.debug(caregiver.patient.id)
-
 
         redirect_to ''
     end

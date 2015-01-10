@@ -1,2 +1,39 @@
 
 
+#left-content
+	.caretaker
+		img src='assets/Grandma-label.jpg' width="100%" height="100%"
+	.name Grandma Jones
+
+#content
+	ul#main-menu
+		li#medications
+			span.title Medication
+			span.minimize value='false'
+				i.fa.fa-angle-down.closed
+				i.fa.fa-angle-left.open
+			.clear
+			.menu-item
+		li#messages
+			span.title Messages
+			span.minimize value='false'
+				i.fa.fa-angle-down.closed
+				i.fa.fa-angle-left.open
+			.clear
+			.menu-item
+		li#movement
+			span.title Movement
+			span.minimize value='false'
+				i.fa.fa-angle-down.closed
+				i.fa.fa-angle-left.open
+			.clear
+			.menu-item
+
+
+coffee:
+	$('.minimize').click ->
+		value = $(this).attr('value') != 'true' ? 'true' : 'false'
+		$(this).attr('value', value)
+		$(this).
+			siblings('.menu-item').
+			slideToggle()

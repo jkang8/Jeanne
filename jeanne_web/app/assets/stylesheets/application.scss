@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 
 @import "standards";
@@ -22,6 +23,93 @@ body {
 	background: $blue;
 	padding: 0px;
 	margin: 0px;
+	color: white;
+}
+
+#left-content {
+	padding: 5px;
+	box-sizing: border-box;
+	float: left;
+	width: 25%;
+	height: 300px;
+	padding: 15px;
+
+	.caretaker {
+		margin: auto;
+		width: 200px;
+		height: 200px;
+		background-image: url("assets/Grandma-label.jpg");
+		border: 3px solid white;
+		box-shadow: 5px 5px 0px darken($blue, 10%);
+		border-radius: 50%;
+		overflow: hidden;
+
+
+	}
+
+	.name {
+		text-align: center;
+		width: 100%;
+		font-weight: 300;
+		font-size: 200%;
+		padding-top: 10px;
+		text-shadow: 2px 2px 0px darken($blue, 10%);
+	}
+}
+
+#content {
+	float: left;
+	box-sizing: border-box;
+	width: 75%;
+	padding: 15px;
+
+	#main-menu {
+		$height: 30px;
+
+		margin: 0px;
+		padding: 0px;
+		width: 100%;
+		border: 1px solid rgba(white, 0.1);
+		border-radius: 2px;
+
+		li {
+			box-sizing: border-box;
+			background: rgba(black, 0.4);
+
+			line-height: 50px;
+			width: 100%;
+			color: white;
+			display: block;
+			
+			.title { 
+				margin-left: $height;
+				font-size: 2 * $height/3;
+				font-weight: 300;
+			}
+
+			& + li {
+				border-top: 1px solid rgba(white, 0.1);
+			}
+
+			.minimize {
+				height: 100%;
+				margin-right: $height;
+				float: right;
+				cursor: pointer;
+				font-size: 150%;
+			}
+		}
+
+
+		.menu-item {
+			display: none;
+			box-sizing: border-box;
+			height: 300px;
+			width: 100%;
+			background:	rgba($blue, 0.5);
+
+		}
+	}
 }
 
 

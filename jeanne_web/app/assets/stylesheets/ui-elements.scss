@@ -19,6 +19,34 @@ input[type=password] {
 }
 
 
+ul {
+	list-style-type: none;
+}
+
+
+[value=true] {
+	.open {
+		display: none;
+	}
+	.closed {
+		display: inline-block;
+	}
+
+}
+
+[value=false] {
+	.closed {
+		display: none;
+	}
+	.open {
+		display: inline-block;
+	}
+
+}
+
+.clear {
+	clear:both;
+}
 
 /*******************************
 * Buttons
