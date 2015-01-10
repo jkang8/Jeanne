@@ -92,7 +92,7 @@ function getMedication() {
         function(e) {
           console.log("Error sending schedule info to Pebble!");
         }
-	  );
+      );
     }      
   );
 }
