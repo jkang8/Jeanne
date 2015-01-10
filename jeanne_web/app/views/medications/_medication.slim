@@ -3,12 +3,15 @@
 
 - id = medication.id
 li.medication id='med-#{id}'
-	#update-form
+	#update
 	    = form_for medication do |f|
 	    	= f.hidden_field :id
+	    	= f.hidden_field :patient_id, value: medication.patient.id
 	        .item.label Take   
+
 	        = f.text_field :name, {placeholder: 'Medication', class: 'item' }
 
+	        = select(:medication, :city_id, [1..10])
 
 	        / select#time-selector
 	            / option#day day
@@ -18,20 +21,20 @@ li.medication id='med-#{id}'
 	        .item.label   on 
 
 	        .item#week-box
-	            input type='checkbox' id='mon'
-	            label for='mon' M
-	            input type='checkbox' id='tues'
-	            label for='tues' T
-	            input type='checkbox' id='wed'
-	            label for='wed' W
-	            input type='checkbox' id='thurs'
-	            label for='thurs' Th 
-	            input type='checkbox' id='fri'
-	            label for='fri' F
-	            input type='checkbox' id='sat'
-	            label for='sat' S
-	            input type='checkbox' id='sun'
-	            label for='sun' Su 
+	            input type='checkbox' id='mon-#{id}'
+	            label for='mon-#{id}' M
+	            input type='checkbox' id='tues-#{id}'
+	            label for='tues-#{id}' T
+	            input type='checkbox' id='wed-#{id}'
+	            label for='wed-#{id}' W
+	            input type='checkbox' id='thurs-#{id}'
+	            label for='thurs-#{id}' Th 
+	            input type='checkbox' id='fri-#{id}'
+	            label for='fri-#{id}' F
+	            input type='checkbox' id='sat-#{id}'
+	            label for='sat-#{id}' S
+	            input type='checkbox' id='sun-#{id}'
+	            label for='sun-#{id}' Su 
 
 	            input type='checkbox' id='all' 
 	            label for='all' All
@@ -55,8 +58,14 @@ li.medication id='med-#{id}'
 						.item.value #{day} 
 
 			span.button-list
-				span.label.fa.fa-times-circle
-				span.label.fa.fa-pencil
+				span.label.fa.fa-times-circle#delete
+				span.label.fa.fa-pencil#edit
 				/ span.button#history View
 				/ span.button#edit Edit
 			.clear
+	-else 
+		a#new
+			.item
+				i.fa.fa-plus-circle
+			.item.label New
+

@@ -8,10 +8,16 @@ class Medication < ActiveRecord::Base
 
 
 	def time_array
+		if times == ''
+			return []
+		end
 		return decode times
 	end
 
 	def days_array
+		if not days 
+			return []
+		end
 		return decode days
 	end
 

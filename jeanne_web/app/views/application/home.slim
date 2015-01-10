@@ -13,7 +13,9 @@
 				ul#medication-list
 			        - @patient.medications.each do | med |
 			        	= render med
-			        = render Medication.new
+			        - medication = Medication.new
+			        - medication.patient = @patient
+			        = render medication
 
 		li.menu-item
 			= render "partials/menu_item", {title: 'Messages', icon: 'fa-comment' }
@@ -41,3 +43,12 @@ coffee:
 
 
 	$('#medication_times').timepicker()
+
+
+	$('.medication #new').click ->
+		$(this).hide()
+		$(this).siblings('#update').show()
+
+	$('.medication #edit').click ->
+		$(this).parent('.medication').find('#display').hide()
+		$(this).parent('.medication').find('#update').show()
