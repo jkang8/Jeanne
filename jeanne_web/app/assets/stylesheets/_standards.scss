@@ -1,0 +1,14 @@
+
+$blue: #22475E;
+$teal: #75B08A;
+$yellow: #F0E797;
+$peach: #FF9D84;
+$red: #FF5460;
+
+@mixin border () {
+	border: none;
+	border-radius: 2px;
+}
+
+$padding: 4px;
+

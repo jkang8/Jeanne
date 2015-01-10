@@ -1,0 +1,67 @@
+
+@import "standards";
+
+
+$button-color: $red;
+$button-shadow: darken($peach, 60%);
+
+strong {
+	color: $peach;
+}
+
+/*******************************
+* Form Elements
+*******************************/
+input[type=text],
+input[type=password] {
+	padding: 4px;
+	@include border();
+}
+
+
+
+/*******************************
+* Buttons
+*******************************/
+button,
+.button,
+input[type=submit] {
+	$height: 2px;
+
+	font-weight: bold;
+
+	padding: $padding;
+	margin-bottom: $height;
+	margin-top: 0px;
+
+	background: $button-color;
+	color: white;
+
+	box-shadow: 0px $height 0px rgba($button-shadow, 0.9);
+	@include border();
+
+	&.active, 
+	&:active {
+		margin-top: $height;
+		margin-bottom: 0px;
+		box-shadow: none;
+	}
+
+	&:hover {
+		background: lighten($button-color, 5%);
+	}
+
+
+}
+
+/*******************************
+* Links
+*******************************/
+a {
+	cursor: pointer;
+	transition: color 0.2s;
+
+	&:hover {
+		color: $peach;
+	}
+}
