@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     end
 
     def logout
-        session[:user] = nil
+        session[:username] = nil
         redirect_to ''
     end
 

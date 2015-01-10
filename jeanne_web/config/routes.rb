@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get 'today' => 'patients#today'
 
+  resources 'patients', :only => [:new, :create]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

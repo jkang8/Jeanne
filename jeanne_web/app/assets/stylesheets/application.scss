@@ -16,7 +16,7 @@
  */
 
 @import "standards";
-
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);
 
 body {
 	font-family: Source Sans Pro;
@@ -30,21 +30,19 @@ body {
 	padding: 5px;
 	box-sizing: border-box;
 	float: left;
-	width: 25%;
-	height: 300px;
 	padding: 15px;
 
-	.caretaker {
+	.patient {
 		margin: auto;
-		width: 200px;
-		height: 200px;
 		background-image: url("assets/Grandma-label.jpg");
 		border: 3px solid white;
-		box-shadow: 5px 5px 0px darken($blue, 10%);
+		box-shadow: 2px 2px 0px 2px darken($blue, 10%);
 		border-radius: 50%;
 		overflow: hidden;
 
-
+		&.spin {
+		    -webkit-animation: spin 1s linear;
+		}
 	}
 
 	.name {
@@ -55,12 +53,20 @@ body {
 		padding-top: 10px;
 		text-shadow: 2px 2px 0px darken($blue, 10%);
 	}
+	.row {
+		text-align: center;
+	}
+}
+
+
+@-webkit-keyframes spin {
+    0%  {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(360deg);}   
 }
 
 #content {
 	float: left;
 	box-sizing: border-box;
-	width: 75%;
 	padding: 15px;
 
 	#main-menu {
@@ -82,9 +88,13 @@ body {
 			display: block;
 			
 			.title { 
-				margin-left: $height;
 				font-size: 2 * $height/3;
 				font-weight: 300;
+
+				i {
+					text-align: center;
+					width: 50px;
+				}
 			}
 
 			& + li {

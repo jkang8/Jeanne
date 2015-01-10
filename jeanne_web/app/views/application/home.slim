@@ -1,39 +1,38 @@
 
 
 #left-content
-	.caretaker
-		img src='assets/Grandma-label.jpg' width="100%" height="100%"
-	.name Grandma Jones
+	= render Patient.first
+
 
 #content
 	ul#main-menu
-		li#medications
-			span.title Medication
-			span.minimize value='false'
-				i.fa.fa-angle-down.closed
-				i.fa.fa-angle-left.open
-			.clear
+
+
+		li#medication
+			= render "partials/menu_item", {title: 'Medication', icon: 'fa-medkit'}
 			.menu-item
+
 		li#messages
-			span.title Messages
-			span.minimize value='false'
-				i.fa.fa-angle-down.closed
-				i.fa.fa-angle-left.open
-			.clear
+			= render "partials/menu_item", {title: 'Messages', icon: 'fa-comment' }
 			.menu-item
+
 		li#movement
-			span.title Movement
-			span.minimize value='false'
-				i.fa.fa-angle-down.closed
-				i.fa.fa-angle-left.open
-			.clear
+			= render "partials/menu_item", {title: 'Movement', icon: 'fa-arrow-right'}
 			.menu-item
+			
 
 
 coffee:
-	$('.minimize').click ->
-		value = $(this).attr('value') != 'true' ? 'true' : 'false'
-		$(this).attr('value', value)
-		$(this).
-			siblings('.menu-item').
+	$('#main-menu .bar ').click ->
+		minimize = $(this).find('.minimize')
+		value = minimize.attr('value') != 'true' ? 'true' : 'false'
+		minimize.attr('value', value)
+		minimize.closest('li').find('.menu-item').
 			slideToggle()
+
+	$('.patient').click ->
+		$(this).toggleClass('spin')
+		setTimeout =>
+			$(this).removeClass('spin')
+		, 1000
+

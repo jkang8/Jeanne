@@ -1,0 +1,33 @@
+
+
+#left-content {
+	width: 25%;
+	height: 300px;
+
+	.patient {
+		width: 200px;
+		height: 200px;
+	}
+}
+
+#content {
+	width: 75%;
+}
+
+
+
+@media (max-width: 921px) {
+	#left-content {
+		width: 100%;
+		height: 200px;
+
+		.patient {
+			width: 100px;
+			height: 100px;
+		}
+	}
+
+	#content {
+		width: 100%;
+	}
+}
