@@ -36,15 +36,15 @@ static void check_wakeup() {
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
   //Check the event is not already scheduled
   if (!wakeup_query(s_wakeup_id, NULL)) {
-    // Current time + 30 seconds
-    time_t future_time = time(NULL) + 30;
+    // Current time + 5 seconds
+    time_t future_time = time(NULL) + 5;
 
     // Schedule wakeup event and keep the WakeupId
     s_wakeup_id = wakeup_schedule(future_time, WAKEUP_REASON, true);
     persist_write_int(PERSIST_KEY_WAKEUP_ID, s_wakeup_id);
 
     // Prepare for waking up later
-    text_layer_set_text(s_output_layer, "This app will now wake up in 30 seconds.\n\nClose me!");
+    text_layer_set_text(s_output_layer, "This app will now wake up in 5 seconds.\n\nClose me!");
   } else {
     // Check existing wakeup
     check_wakeup();
