@@ -17,7 +17,7 @@ void wakeup_handler(WakeupId id, int32_t reason) {
   text_layer_set_text_alignment(s_output_layer, GTextAlignmentLeft);
   text_layer_set_text(s_output_layer, s_buffer);
   vibes_long_pulse();
-  // Delete the ID if waking up
+  // Delete the ID if yes is pressed
   persist_delete(PERSIST_KEY_WAKEUP_ID);
 }
 
