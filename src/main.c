@@ -1,10 +1,9 @@
 #include <pebble.h>
 #include <alarm.h>
+#include <recieve.h>
 
-  
 Window *s_main_window;
 TextLayer *s_output_layer;
-
 
 static void main_window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
