@@ -17,14 +17,31 @@
 		// line-height: 100%;
 	}
 
+
+
+	.amount: {
+		width: 30px;
+	}
+
+	.name {
+		width: 150px;
+	}
+
 	.value {
 		color: $peach;
+	}
+
+	#time-list {
+		width: 120px;
 	}
 
 	::-webkit-input-placeholder {
 	   color: white;
 	}
 
+	select {
+		margin-top: 15px;
+	}
 
 	// .label {
 	// 	padding: 5px;
@@ -52,7 +69,7 @@
         border: 1px solid $peach;
 
         &#medication_times {
-            width: 70px;
+            width: 90px;
         }
     }
 
@@ -79,9 +96,14 @@
 
 	}
 
+	input[checked="checked"] + label,
 	input:checked + label {
 		background: $peach !important; 
 		color: white !important;
+	}
+
+	.button {
+		line-height: 100%;
 	}
 
 	[for=all] {
