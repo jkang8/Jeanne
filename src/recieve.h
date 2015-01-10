@@ -1,3 +1,3 @@
 #pragma once
 #include <pebble.h>
-void recieve_key_value(int key,void* value)
+void receive_key_value(int key,void* value)

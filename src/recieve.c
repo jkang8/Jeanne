@@ -4,7 +4,7 @@
 extern int PERSIST_KEY_TIME;
 extern int PERSIST_KEY_DRUG;
 extern int PERSIST_KEY_AMOUNT;
-void recieve_key_value(int key,void* value){
+void receive_key_value(int key,void* value){
   switch(key) {
     case 0:
       persist_write_int(PERSIST_KEY_TIME,value);
