@@ -1,23 +1,13 @@
 {
-    "appKeys": {
-        "KEY_CONDITIONS": 1,
-        "KEY_TEMPERATURE": 0
-    },
+    "appKeys": {},
     "capabilities": [
-        "location"
+        ""
     ],
     "companyName": "jkang8@ucsc.edu",
     "longName": "Jeanne",
     "projectType": "native",
     "resources": {
-        "media": [
-            {
-                "file": "images/cara2-01.png",
-                "menuIcon": true,
-                "name": "IMAGE_LOGO",
-                "type": "png"
-            }
-        ]
+        "media": []
     },
     "shortName": "Jeanne",
     "uuid": "42966400-8570-404c-a62e-87f089736212",
