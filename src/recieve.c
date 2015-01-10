@@ -1,7 +1,7 @@
 #include <pebble.h>
 #include "recieve.h"
 
-void receive_key_value(int key,void *value) {
+void receive_key_value(int key,void value) {
   //Function will put the time drug and amount values into persistent data
   switch(key) {
     case 0:
