@@ -1,5 +1,6 @@
 #include <pebble.h>
 #include <alarm.h>
+#include <recieve.h>
 #define WAKEUP_REASON 0
 #define PERSIST_KEY_WAKEUP_ID 42
 #define number_pills 10
@@ -9,7 +10,7 @@ WakeupId s_wakeup_id;
 extern TextLayer *s_output_layer;
 
 void wakeup_handler(WakeupId id, int32_t reason) {
-  // An alarm is going off
+  // Set off alarm
   static char s_buffer[64];
   snprintf(s_buffer, sizeof(s_buffer), "Take %d %s as soon as possible.", number_pills, medication);
   text_layer_set_background_color(s_output_layer, GColorWhite);
@@ -17,7 +18,8 @@ void wakeup_handler(WakeupId id, int32_t reason) {
   text_layer_set_text_alignment(s_output_layer, GTextAlignmentLeft);
   text_layer_set_text(s_output_layer, s_buffer);
   vibes_long_pulse();
-  // Delete the ID if waking up
+  
+  // Delete the ID if yes is pressed
   persist_delete(PERSIST_KEY_WAKEUP_ID);
 }
 
