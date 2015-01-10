@@ -1,6 +1,9 @@
 
 
+@import "standards";
+
 $height: 50px;
+
 
 #header {
 	background: rgba(black, 0.5);
@@ -17,6 +20,7 @@ $height: 50px;
 		line-height: $height;
 		float: right;
 		font-weight: 300;
+		color: white;
 
 		.link {
 			margin-right: 20px;

@@ -1,8 +1,8 @@
-class Caregivers < ActiveRecord::Base
+class Caregiver < ActiveRecord::Base
 	belongs_to :patient
 
 	def patient
-		Patients.find(patient_id)
+		Patient.find(patient_id)
 	end
 
 	def set_patient(patient)

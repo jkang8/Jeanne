@@ -57,9 +57,11 @@ input[type=submit] {
 /*******************************
 * Links
 *******************************/
-a {
+a, a:visited {
+	text-decoration: none;
 	cursor: pointer;
 	transition: color 0.2s;
+	color: white;
 
 	&:hover {
 		color: $peach;

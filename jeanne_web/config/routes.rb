@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get 'init' => 'application#init'
   get 'home' => 'application#home'
   get 'clear' => 'application#clear'
+  get 'logout' => 'application#logout'
+
+  get 'today' => 'patients#today'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

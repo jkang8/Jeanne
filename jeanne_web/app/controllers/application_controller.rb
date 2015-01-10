@@ -8,53 +8,85 @@ class ApplicationController < ActionController::Base
         if params
             @username = params[:username]
             @password = params[:password]
-            user = Caregivers.find_by_username(@username)
-            if user and user.password == @password
-                session[:user] = user.username
+            caregiver = Caregiver.find_by_username(@username)
+            if caregiver and caregiver.password == @password
+                session[:username] = caregiver.username
             end
         end
 
-        if session[:user]
+        if user
             redirect_to '/home'
         end
     end
 
-    def home
-        @user = user
-    end
-
-    def clear
+    def logout
         session[:user] = nil
         redirect_to ''
     end
 
 
+    def home
+        @user = user
+
+        if not @user
+            redirect_to ''
+        end
+    end
+
+    def clear
+        session[:username] = nil
+        redirect_to ''
+    end
+
+
     def init
-        if Caregivers.all.count > 1
-            Caregivers.first.destroy
-            Patients.first.destroy
+        if Caregiver.all.count > 1
+            Caregiver.all.each do |giver|
+                giver.destroy
+            end
+
+            Patient.all.each do |patients|
+                patients.destroy
+            end
+
+            Medication.all.each do |patients|
+                patients.destroy
+            end
+
         end
 
-        caregiver = Caregivers.new
-        caregiver.username = 'Alex'
-        caregiver.password = '1'
-        caregiver.email= 'aprowe@ucsc.edu'
-
-        patient = Patients.new
+        patient = Patient.new
         patient.name = "Cara Jeanne"
         patient.birthdate = '12/12/1930'.to_date
         patient.save
-        caregiver.patient_id = patient.id
+
+        caregiver = Caregiver.new
+        caregiver.username = 'Alex'
+        caregiver.password = '1'
+        caregiver.email= 'aprowe@ucsc.edu'
+        caregiver.patient = patient
+        caregiver.save
+
+
+        medication = Medication.new 
+        medication.name = 'Viagra'
+        medication.description = 'Long White Pill'
+        medication.times = ['12:30', '15:20'].to_json
+        medication.days = [0,1,2,3,4,5,6,7].to_json
+        medication.patient = patient
+        medication.amount = 2
+        medication.save
+
+
 
         logger.debug(caregiver.patient.id)
 
-        caregiver.save
 
         redirect_to ''
     end
 
     def user
-        return Caregivers.find_by_username session[:user]
+        return Caregiver.find_by_username session[:username]
     end
 
 end
