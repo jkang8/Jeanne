@@ -7,7 +7,7 @@
 #define day TODAY
 WakeupId s_wakeup_id;
 extern TextLayer *s_output_layer;
-
+//TESTING123
 void wakeup_handler(WakeupId id, int32_t reason) {
   // The app has woken!
   text_layer_set_text(s_output_layer, "Wakey wakey!");
