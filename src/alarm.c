@@ -2,9 +2,6 @@
 #include <alarm.h>
 #define WAKEUP_REASON 0
 #define PERSIST_KEY_WAKEUP_ID 42
-#define PERSIST_KEY_DRUG 4
-#define PERSIST_KEY_TIME 5
-#define PERSIST_KEY_AMOUNT 6
 #define number_pills 10
 #define medication "viagra"
 #define day TODAY
