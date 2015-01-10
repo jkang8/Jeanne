@@ -69,14 +69,14 @@ function getMedication() {
       console.log("Medication is " + JSON.stringify(json));
 	  
 	  var amount = json.amount;
-	  console.log("Amount is : + amount);
+	  console.log("Amount is : " + amount);
 	  
       var drug = json.name;
       console.log("Drug is " + drug);
-
+	  
       var time = json.time;      
       console.log("Conditions are " + time);
-      
+	  
       // Assemble dictionary using our keys
       var dictionary = {
         "KEY_AMOUNT": amount,
