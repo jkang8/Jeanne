@@ -12,7 +12,7 @@ Window *g_window_home;
 static TextLayer *s_home_layer;
 
 static void tap_handler(AccelAxisType axis, int32_t direction) {
-  APP_LOG(APP_LOG_LEVEL_INFO, "tap_handler()");
+  APP_LOG(APP_LOG_LEVEL_INFO, "home: tap_handler()");
   switch (axis) {
   case ACCEL_AXIS_X:
   case ACCEL_AXIS_Y:
