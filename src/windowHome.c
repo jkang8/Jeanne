@@ -9,7 +9,6 @@ TextLayer *g_main_layer;
 
 // static globals
 static Window *s_window_home;
-static TextLayer *s_time_layer;
 
 void window_home_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
