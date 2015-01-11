@@ -22,7 +22,7 @@ static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
     persist_delete(PERSIST_KEY_WAKEUP_ID);
 	
 	// Kill alarm layers
-	void action_bar_layer_destroy(ActionBarLayer *action_bar);
+	action_bar_layer_destroy(s_action_bar);
 	
 	// Add bitmap smiley face
 	s_ty_layer = text_layer_create(GRect(0, 100, 144, 86));
@@ -126,12 +126,12 @@ void window_alarm_unload(Window *window) {
 void window_alarm_init(Window *window) {
   // Create alarm Window
   g_window_alarm = window_create();
-  window_set_window_handlers(g_action_bar, (WindowHandlers) {
+  window_set_window_handlers(s_window_alarm, (WindowHandlers) {
     .load = window_alarm_load,
     .unload = window_alarm_unload
   });
 }
 
 void window_alarm_deinit(Window *window) {
-	window_destroy(g_action_bar);
+	window_destroy(g_window_alarm);
 }
