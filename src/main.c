@@ -4,11 +4,13 @@
 #include <TickHandler.h>
 #include <recieve.h> 
 #include <windowHome.h>
-#include <windowTimer.h>
+#include <windowAlarm.h>
+#include <windowHelp.h>
  
 static void init(void) {
-  // Initialize windows
   window_home_init();
+  window_alarm_init();
+  window_help_init();
 
   // Subscribe to Wakeup API
   wakeup_service_subscribe(wakeup_handler);
@@ -22,14 +24,10 @@ static void init(void) {
     // Get details and handle the wakeup
     wakeup_get_launch_event(&id, &reason);
     wakeup_handler(id, reason);
-  } else {
-    // Check whether a wakeup will occur soon
-    check_wakeup();
   }
   
   // Register with TickTimerService to poll the server
   tick_timer_service_subscribe(MINUTE_UNIT, tick_handler_medication);//DO NOT ADD ANOTHER SUBSCRIBE LEAVE AS IS
-  
    //
    // Set up message passing to server
    //
@@ -46,6 +44,8 @@ static void init(void) {
 
 static void deinit(void) {
 	window_home_deinit();
+	window_alarm_deinit();
+	window_help_deinit();
 }
 
 int main(void) {
