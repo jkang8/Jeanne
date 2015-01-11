@@ -1,6 +1,7 @@
 #include <pebble.h>
 #include "recieve.h"
 #include <alarm.h>
+#define PERSIST_KEY_WAKEUP_ID 42
 
 void receive_key_value(Tuple *t) {
   //Function will put the time drug and amount values into persistent data

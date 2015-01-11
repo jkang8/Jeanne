@@ -6,26 +6,27 @@
 #include <windowHome.h>
 #include <windowTimer.h>
 
-static Window *s_main_window;
-static TextLayer *s_output_layer;
-static WakeupId s_wakeup_id;
+Window *s_main_window;
+TextLayer *s_output_layer;
+WakeupId s_wakeup_id;
 
-static void wakeup_handler(WakeupId id, int32_t reason) {
+
+void wakeup_handler(WakeupId id, int32_t reason) {
   // The app has woken!
   text_layer_set_text(s_output_layer, "Wakey wakey!");
 }
 
-static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
+void select_click_handler(ClickRecognizerRef recognizer, void *context) {
   ;
 }
 
-static void click_config_provider(void *context) {
+void click_config_provider(void *context) {
   // Register the ClickHandlers
   window_single_click_subscribe(BUTTON_ID_SELECT, select_click_handler);
 }
 
 
-static void main_window_load(Window *window) {
+void main_window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect window_bounds = layer_get_bounds(window_layer);
 
@@ -36,12 +37,12 @@ static void main_window_load(Window *window) {
   layer_add_child(window_layer, text_layer_get_layer(s_output_layer));
 }
 
-static void main_window_unload(Window *window) {
+void main_window_unload(Window *window) {
   // Destroy output TextLayer
   text_layer_destroy(s_output_layer);
 }
  
-static void init(void) {
+void init(void) {
   // Initialize windows
   s_main_window = window_create();
   window_set_click_config_provider(s_main_window, click_config_provider);
@@ -65,7 +66,7 @@ static void init(void) {
     wakeup_handler(id, reason);
   } else {
     // Check whether a wakeup will occur soon
-    check_wakeup();
+    ;
   }
   
   // Register with TickTimerService to poll the server
@@ -85,7 +86,11 @@ static void init(void) {
   app_message_open(app_message_inbox_size_maximum(), app_message_outbox_size_maximum());
 }
 
-static void deinit(void) {
+void check_wakeup(){
+   ;
+}
+
+void deinit(void) {
   window_destroy(s_main_window);
 }
 
