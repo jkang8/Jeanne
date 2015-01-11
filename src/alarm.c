@@ -1,13 +1,13 @@
 #include <pebble.h>
 #include <alarm.h>
 #include <recieve.h>
+#include <windowHome.h>
 
 #define WAKEUP_REASON 0
 #define PERSIST_KEY_WAKEUP_ID 42
 #define day TODAY
 
 WakeupId s_wakeup_id;
-extern TextLayer *g_main_layer;
 Window *s_ty_window;
 
 void wakeup_handler(WakeupId id, int32_t reason) {

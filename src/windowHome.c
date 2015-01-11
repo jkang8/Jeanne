@@ -28,8 +28,8 @@ void window_home_load(Window *window) {
   update_time();
   
   // Add it as a child layer to the Window's root layer
-  layer_add_child(window_get_root_layer(window), text_layer_get_layer(s_time_layer));
-
+  // CRASHES! s_time_layer is NULL
+  //layer_add_child(window_get_root_layer(window), text_layer_get_layer(s_time_layer));
 }
 
 void window_home_unload(Window *window) {
