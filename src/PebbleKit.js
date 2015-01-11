@@ -8,7 +8,7 @@ var xhrRequest = function (url, type, callback) {
 };
 
 function send_help() {
-    var url = "http://cara.rowealex.com/create_alert?message=Help+I+Fell+And+My+Dog+Ate+My+Face"
+    var url = "http://cara.rowealex.com/create_alert?message=I+Need+Help"
 	xhrRequest(url, 'GET',
       function(responseText){}
     );
