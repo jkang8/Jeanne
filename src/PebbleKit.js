@@ -79,9 +79,10 @@ function getMedication() {
 
       // Assemble dictionary using our keys
       var dictionary = {
-        "KEY_AMOUNT": amount,
         "KEY_DRUG": drug,
-		"KEY_TIME": time 
+        "KEY_TIME": time, 
+        "KEY_AMOUNT": amount
+		
       };
 
       // Send to Pebble
