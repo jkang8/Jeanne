@@ -18,9 +18,9 @@ static void main_window_load(Window *window) {
   // Create output TextLayer
   s_output_layer = text_layer_create(GRect(0, 0, window_bounds.size.w, window_bounds.size.h));
   text_layer_set_text_alignment(s_output_layer, GTextAlignmentCenter);
-  amount = persist_read_int(PERSIST_KEY_AMOUNT);
+  int amount = persist_read_int(PERSIST_KEY_AMOUNT);
   char buffer[20];
-  text_layer_set_text(s_output_layer, snprintf(buffer,20,"%d",amount);
+  text_layer_set_text(s_output_layer, snprintf(buffer,20,"%d",amount));
   layer_add_child(window_layer, text_layer_get_layer(s_output_layer));
 }
 
