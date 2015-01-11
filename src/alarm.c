@@ -62,10 +62,12 @@ void check_wakeup() {
     // There is a wakeup scheduled soon
     time_t timestamp = 0;
     wakeup_query(s_wakeup_id, &timestamp);
-
+    int number_pills = persist_read_int(PERSIST_KEY_AMOUNT);
+    char drugs[64];
+    persist_read_string(PERSIST_KEY_DRUG, drugs, 64);
     // Show how many seconds to go
     static char s_buffer[64];
-    snprintf(s_buffer, sizeof(s_buffer), "Take %d %s!", number_pills, medication);
+    snprintf(s_buffer, sizeof(s_buffer), "Take %d %s!", number_pills, drugs);
     text_layer_set_text(s_output_layer, s_buffer);
   }
 >>>>>>> 41af45cf7af3ffb7574b0e3c674218384f424752

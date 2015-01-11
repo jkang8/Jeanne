@@ -75,7 +75,7 @@ function getMedication() {
       console.log("Drug is " + drug);
 
       var time = json.time;      
-      console.log("Conditions are " + time);
+      console.log("Time are " + time);
 
       // Assemble dictionary using our keys
       var dictionary = {
