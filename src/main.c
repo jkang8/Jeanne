@@ -5,9 +5,7 @@
 #include <recieve.h> 
 #include <windowHome.h>
 #include <windowTimer.h>
-  
-TextLayer *s_time_layer;
-
+ 
 static void init(void) {
   // Initialize windows
   window_home_init();

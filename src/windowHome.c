@@ -2,12 +2,14 @@
 #include <windowHome.h>
 #include <recieve.h>
 #include <TickHandler.h>
+#include <alarm.h>
 
 // external globals
 
 // static globals
 static Window *s_window_home;
 static TextLayer *s_output_layer;
+static TextLayer *s_time_layer;
 
 void window_home_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
