@@ -27,13 +27,11 @@ body {
 }
 
 #left-content {
-	padding: 5px;
 	box-sizing: border-box;
 	float: left;
 	padding: 15px;
 
 	.patient {
-		margin: auto;
 		border: 3px solid white;
 		box-shadow: 2px 2px 0px 2px darken($blue, 10%);
 		border-radius: 50%;
@@ -45,16 +43,12 @@ body {
 	}
 
 	.name {
-		text-align: center;
-		width: 100%;
 		font-weight: 300;
 		font-size: 200%;
 		padding-top: 10px;
 		text-shadow: 2px 2px 0px darken($blue, 10%);
 	}
-	.row {
-		text-align: center;
-	}
+
 }
 
 
@@ -66,7 +60,6 @@ body {
 #content {
 	float: left;
 	box-sizing: border-box;
-	padding: 15px;
 
 	#main-menu {
 		$height: 30px;
@@ -114,7 +107,7 @@ body {
 }
 
 .menu-content {
-	padding: 5px;
+	// padding: 5px;
 	display: none;
 	box-sizing: border-box;
 	// height: 300px;

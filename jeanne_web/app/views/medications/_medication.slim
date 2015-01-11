@@ -18,7 +18,7 @@ li.medication id='med-#{id}'
 	            / option#day day
 	            / option#week week
 	        .item.label  at 
-	        = f.text_field :times, {placeholder: 'Time', class: 'item timepicker'}
+	        = f.text_field :time, {placeholder: 'Time', class: 'item timepicker'}
 	        .item.label   on 
 
 	        .item#week-box
@@ -40,7 +40,7 @@ li.medication id='med-#{id}'
 	            label.for-all for='all' All
 
 	        = f.submit
-	        span.label.fa.fa-times-circle#delete value='#{id}'
+	        / span.label.fa.fa-times-circle#delete value='#{id}'
 	- if id
 		#display
 			.item.label Take 
@@ -48,8 +48,7 @@ li.medication id='med-#{id}'
 			.item.value.name #{medication.name} 
 			.item.label at 
 			.item#time-list
-				- medication.time_array.each do | time | 
-					.item.value #{time} 
+				.item.value #{medication.time.to_formatted_s :time}
 			- if medication.everyday?
 				.item.value every day
 			- else

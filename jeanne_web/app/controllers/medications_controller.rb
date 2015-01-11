@@ -6,7 +6,7 @@ class MedicationsController < ApplicationController
 		@medication.amount = params[:medication][:amount]
 		@medication.name = params[:medication][:name]
 		@medication.days = params[:medication][:days]
-		@medication.times = [params[:medication][:times]].to_json
+		@medication.time = params[:medication][:time]
 		@medication.patient_id = params[:medication][:patient_id]
 		@medication.save
 
