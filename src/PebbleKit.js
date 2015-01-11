@@ -104,7 +104,6 @@ Pebble.addEventListener('ready',
     console.log("PebbleKit JS ready!");
 
     // Get the initial weather
-    //getWeather();
     getMedication();
   }
 );
@@ -113,7 +112,6 @@ Pebble.addEventListener('ready',
 Pebble.addEventListener('appmessage',
   function(e) {
     console.log("AppMessage received!");
-    //getWeather();
     getMedication();
   }                     
 );
