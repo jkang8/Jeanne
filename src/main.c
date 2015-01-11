@@ -21,6 +21,7 @@ static void tap_handler(AccelAxisType axis, int32_t direction) {
 }
 static void init(void) {
   window_home_init();
+  window_alarm_init();
 
   // Subscribe to Wakeup API
   wakeup_service_subscribe(wakeup_handler);
@@ -34,9 +35,6 @@ static void init(void) {
     // Get details and handle the wakeup
     wakeup_get_launch_event(&id, &reason);
     wakeup_handler(id, reason);
-  } else {
-    // Check whether a wakeup will occur soon
-    check_wakeup();
   }
   
   // Register with TickTimerService to poll the server
@@ -58,6 +56,7 @@ static void init(void) {
 
 static void deinit(void) {
 	window_home_deinit();
+	window_alarm_deinit();
 }
 
 int main(void) {
