@@ -20,7 +20,7 @@ void window_thanks_load(Window *window) {
 	text_layer_set_font(s_ty_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
 	text_layer_set_text(s_ty_layer, "Thank you!");
 	//Wait 3 seconds
-	psleep(300); 
+	psleep(3000); 
 	window_stack_remove(g_window_home,true);
 	window_stack_push(g_window_home,true);
 	APP_LOG(APP_LOG_LEVEL_INFO, "push: home window");
