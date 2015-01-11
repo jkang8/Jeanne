@@ -19,6 +19,7 @@ static ActionBarLayer *s_action_bar;
 static WakeupId s_wakeup_id;
 
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
+	APP_LOG(APP_LOG_LEVEL_INFO, "ALARM: select_click_handler()");
     // Delete the ID 
     persist_delete(PERSIST_KEY_WAKEUP_ID);
 	
@@ -37,6 +38,7 @@ static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
 }
 
 static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
+	APP_LOG(APP_LOG_LEVEL_INFO, "ALARM: down_click_handler()");
 	//Schedule an alarm to go off in 5 minutes
 	time_t future_time = time(NULL) + 2;    //change to 300 in final version
 	s_wakeup_id = wakeup_schedule(future_time, WAKEUP_REASON, true);
@@ -45,7 +47,7 @@ static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
 
 //remove this function in final product
 static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
-  APP_LOG(APP_LOG_LEVEL_INFO, "Up clicked!");
+  APP_LOG(APP_LOG_LEVEL_INFO, "ALARM: up_click_handler()");
   //Placeholder alarm set for 2 seconds from now, in the future we should put how no meds are scheduled to be taken,
   //perhaps check for web connectivity or caregiver input?
   time_t future_time = time(NULL) + 2;
@@ -59,12 +61,14 @@ static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
 
 static void click_config_provider(void *context) {
   // Register the ClickHandlers
+  APP_LOG(APP_LOG_LEVEL_INFO, "ALARM: click_config_provider()");
   window_single_click_subscribe(BUTTON_ID_UP, up_click_handler); //set an alarm
   window_single_click_subscribe(BUTTON_ID_SELECT, select_click_handler); //taken
   window_single_click_subscribe(BUTTON_ID_DOWN, down_click_handler); //snooze
 }
 
 void window_alarm_load(Window *window) {
+  APP_LOG(APP_LOG_LEVEL_INFO, "ALARM: window_alarm_load()");
   Layer *window_layer = window_get_root_layer(window);
   GRect window_bounds = layer_get_bounds(window_layer);
 
@@ -119,6 +123,7 @@ void window_alarm_load(Window *window) {
 }
 
 void window_alarm_unload(Window *window) {
+	APP_LOG(APP_LOG_LEVEL_INFO, "ALARM: window_alarm_unload()");
   // Destroy TextLayers
   text_layer_destroy(s_alarm_layer);
   text_layer_destroy(s_taken_layer);
@@ -126,6 +131,7 @@ void window_alarm_unload(Window *window) {
 }
 
 void window_alarm_init(Window *window) {
+	APP_LOG(APP_LOG_LEVEL_INFO, "ALARM: window_alarm_init()");
   // Create alarm Window
   g_window_alarm = window_create();
   window_set_window_handlers(g_window_alarm, (WindowHandlers) {
@@ -135,5 +141,6 @@ void window_alarm_init(Window *window) {
 }
 
 void window_alarm_deinit(Window *window) {
+	APP_LOG(APP_LOG_LEVEL_INFO, "ALARM: window_alarm_deinit()");
 	window_destroy(g_window_alarm);
 }
