@@ -64,6 +64,8 @@ function getWeather() {
   );
 }
 
+var timestamps = [];
+
 function getMedication() {
   // Construct URL
   var url = "http://cara.rowealex.com/today";
@@ -97,10 +99,16 @@ function getMedication() {
 		
       };
 
+
+      if (timestamps.indexOf(time) < 0) {
+        return;
+      }
+      
       // Send to Pebble
       Pebble.sendAppMessage(dictionary,
         function(e) {
           console.log("Schedule info sent to Pebble successfully!");
+          timestamps.push(time);
         },
         function(e) {
           console.log("Error sending schedule info to Pebble!");
