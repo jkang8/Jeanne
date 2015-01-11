@@ -7,12 +7,12 @@
 
 // external globals
 Window *g_window_alarm;
+Window *g_window_thanks;
 
 // static globals
 static TextLayer *s_alarm_layer;
 static TextLayer *s_taken_layer;
 static TextLayer *s_snooze_layer;
-static TextLayer *s_ty_layer;
 static ActionBarLayer *s_action_bar;
 static WakeupId s_wakeup_id;
 static GBitmap *s_check_bitmap;
@@ -23,20 +23,10 @@ static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
 	APP_LOG(APP_LOG_LEVEL_INFO, "ALARM: select_click_handler()");
     // Delete the ID 
     //persist_delete(PERSIST_KEY_WAKEUP_ID);
-	
-	// Kill alarm layers
-	action_bar_layer_destroy(s_action_bar);
-	
-	// Add bitmap smiley face
-	s_ty_layer = text_layer_create(GRect(0, 100, 144, 86));
-	text_layer_set_text_alignment(s_ty_layer, GTextAlignmentCenter);
-	text_layer_set_font(s_ty_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
-	text_layer_set_text(s_ty_layer, "Thank you!");
-	//Wait 3 seconds
-	psleep(300); 
-	window_stack_remove(g_window_home,true);
-	window_stack_push(g_window_home,true);
-	APP_LOG(APP_LOG_LEVEL_INFO, "push: home window");
+	 
+	window_stack_remove(g_window_thanks,true);
+	window_stack_push(g_window_thanks,true);
+	APP_LOG(APP_LOG_LEVEL_INFO, "push: thanks window");
 }
 
 static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
@@ -48,7 +38,7 @@ static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
 }
 
 //remove this function in final product
-static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
+/*static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
   APP_LOG(APP_LOG_LEVEL_INFO, "ALARM: up_click_handler()");
   //Placeholder alarm set for 2 seconds from now, in the future we should put how no meds are scheduled to be taken,
   //perhaps check for web connectivity or caregiver input?
@@ -59,12 +49,12 @@ static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
   // Schedule wakeup event and keep the WakeupId
   s_wakeup_id = wakeup_schedule(future_time, WAKEUP_REASON, true);
   persist_write_int(PERSIST_KEY_WAKEUP_ID, s_wakeup_id);
-}
+}*/
 
 static void click_config_provider(void *context) {
   // Register the ClickHandlers
   APP_LOG(APP_LOG_LEVEL_INFO, "ALARM: click_config_provider()");
-  window_single_click_subscribe(BUTTON_ID_UP, up_click_handler); //set an alarm
+  //window_single_click_subscribe(BUTTON_ID_UP, up_click_handler); //set an alarm
   window_single_click_subscribe(BUTTON_ID_SELECT, select_click_handler); //taken
   window_single_click_subscribe(BUTTON_ID_DOWN, down_click_handler); //snooze
 }
@@ -96,23 +86,17 @@ void window_alarm_load(Window *window) {
   s_click_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_CLICK);
   s_snooze_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_SNOOZE);
   
-  action_bar_layer_set_icon(s_action_bar, BUTTON_ID_UP,     s_check_bitmap); 
-  action_bar_layer_set_icon(s_action_bar, BUTTON_ID_SELECT, s_click_bitmap);
+  //action_bar_layer_set_icon(s_action_bar, BUTTON_ID_UP,     s_click_bitmap); 
+  action_bar_layer_set_icon(s_action_bar, BUTTON_ID_SELECT, s_check_bitmap);
   action_bar_layer_set_icon(s_action_bar, BUTTON_ID_DOWN,   s_snooze_bitmap);
 
-  // Create alarm TextLayer
+  // Alarm TextLayer
   static char s_buffer[64];
-  snprintf(s_buffer, sizeof(s_buffer), "It is time to take %d %s.", number_pills, drug_buffer);
+  snprintf(s_buffer, sizeof(s_buffer), "Take %d %s now.", number_pills, drug_buffer);
   s_alarm_layer = text_layer_create(GRect(5, 0, window_bounds.size.w - 40, 64));
-  /*text_layer_set_background_color(s_alarm_layer, GColorBlack);
-  APP_LOG(APP_LOG_LEVEL_INFO, "Background colored!");
-  text_layer_set_text_color(s_alarm_layer, GColorWhite);
-  APP_LOG(APP_LOG_LEVEL_INFO, "Text colored!");*/
   text_layer_set_text_alignment(s_alarm_layer, GTextAlignmentCenter);
   text_layer_set_font(s_alarm_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
   text_layer_set_overflow_mode(s_alarm_layer, GTextOverflowModeWordWrap);
-  
-  // Alarm layer
   layer_add_child(window_layer, text_layer_get_layer(s_alarm_layer));
   text_layer_set_text(s_alarm_layer, s_buffer);
   
@@ -136,7 +120,7 @@ void window_alarm_load(Window *window) {
 
 void window_alarm_unload(Window *window) {
 	APP_LOG(APP_LOG_LEVEL_INFO, "ALARM: window_alarm_unload()");
-  // Destroy TextLayers
+  // Destroy Layers
   text_layer_destroy(s_alarm_layer);
   text_layer_destroy(s_taken_layer);
   text_layer_destroy(s_snooze_layer);
@@ -144,6 +128,8 @@ void window_alarm_unload(Window *window) {
   gbitmap_destroy(s_check_bitmap);
   gbitmap_destroy(s_click_bitmap);
   gbitmap_destroy(s_snooze_bitmap);
+  
+  action_bar_layer_destroy(s_action_bar);
 }
 
 void window_alarm_init(Window *window) {

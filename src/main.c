@@ -11,6 +11,7 @@ static void init(void) {
   window_home_init();
   window_alarm_init();
   window_help_init();
+  window_thanks_init();
 
   // Subscribe to Wakeup API
   wakeup_service_subscribe(wakeup_handler);
@@ -43,10 +44,10 @@ static void init(void) {
 }
 
 static void deinit(void) {
-	tick_timer_service_unsubscribe();
 	window_home_deinit();
 	window_alarm_deinit();
 	window_help_deinit();
+	window_thanks_deinit();
 }
 
 int main(void) {
