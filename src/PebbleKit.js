@@ -118,7 +118,7 @@ Pebble.addEventListener('ready',
 // Listen for when an AppMessage is received
 Pebble.addEventListener('appmessage',
   function(e) {
-    console.log("AppMessage received!");
+    console.log("AppMessage received:" + e.payload);
 	send_help();
     getMedication();
   }                     
