@@ -10,6 +10,20 @@ TextLayer *g_main_layer;
 // static globals
 static Window *s_window_home;
 
+static void tap_handler(AccelAxisType axis, int32_t direction) {
+  switch (axis) {
+  case ACCEL_AXIS_X:
+    if (direction != 0) text_layer_set_text(g_main_layer, "Help request sent.");
+    break;
+  case ACCEL_AXIS_Y:
+    if (direction != 0) text_layer_set_text(g_main_layer, "Help request sent.");
+    break;
+  case ACCEL_AXIS_Z:
+    if (direction != 0) text_layer_set_text(g_main_layer, "Help request sent.");
+    break;
+  }
+}
+
 void window_home_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect window_bounds = layer_get_bounds(window_layer);
@@ -21,13 +35,17 @@ void window_home_load(Window *window) {
   text_layer_set_text(g_main_layer, "Tap for help.");
   
   // Display time on main window
-  layer_add_child(window_layer, text_layer_get_layer(g_main_layer));  
+  layer_add_child(window_layer, text_layer_get_layer(g_main_layer)); 
+
+  accel_tap_service_subscribe(tap_handler);  
   
 }
 
 void window_home_unload(Window *window) {
+  accel_tap_service_unsubscribe(tap_handler);
   // Destroy output TextLayer
   text_layer_destroy(g_main_layer);
+  
 }
 
 void window_home_init(Window *window) {

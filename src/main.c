@@ -6,19 +6,6 @@
 #include <windowHome.h>
 #include <windowTimer.h>
  
-static void tap_handler(AccelAxisType axis, int32_t direction) {
-  switch (axis) {
-  case ACCEL_AXIS_X:
-    if (direction != 0) text_layer_set_text(g_main_layer, "Help request sent.");
-    break;
-  case ACCEL_AXIS_Y:
-    if (direction != 0) text_layer_set_text(g_main_layer, "Help request sent.");
-    break;
-  case ACCEL_AXIS_Z:
-    if (direction != 0) text_layer_set_text(g_main_layer, "Help request sent.");
-    break;
-  }
-}
 static void init(void) {
   window_home_init();
   window_alarm_init();
@@ -39,7 +26,6 @@ static void init(void) {
   
   // Register with TickTimerService to poll the server
   tick_timer_service_subscribe(MINUTE_UNIT, tick_handler_medication);//DO NOT ADD ANOTHER SUBSCRIBE LEAVE AS IS
-  accel_tap_service_subscribe(tap_handler);
    //
    // Set up message passing to server
    //
