@@ -99,7 +99,10 @@ Pebble.addEventListener('ready',
 Pebble.addEventListener('appmessage',
   function(e) {
     console.log("AppMessage received:" + e.payload);
-	if(e.payload[5]==5){send_help();}
-    getMedication();
+	if(e.payload[5]==5){
+	   send_help();
+	} else {
+	   getMedication();
+	}
   }                     
 );
