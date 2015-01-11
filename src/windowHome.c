@@ -11,6 +11,7 @@ TextLayer *g_main_layer;
 Window *g_window_home;
 
 static void tap_handler(AccelAxisType axis, int32_t direction) {
+  APP_LOG(APP_LOG_LEVEL_INFO, "tap_handler()");
   switch (axis) {
   case ACCEL_AXIS_X:
   case ACCEL_AXIS_Y:
@@ -44,7 +45,6 @@ void window_home_load(Window *window) {
 
 void window_home_unload(Window *window) {
   accel_tap_service_unsubscribe();
-  // Destroy output TextLayer
   text_layer_destroy(g_main_layer);
   
 }
