@@ -2,7 +2,6 @@
 #include <windowAlarm.h>
 #include <receive.h>
 
-#define PERSIST_KEY_WAKEUP_ID 42
 #define WAKEUP_REASON 0
 
 // external globals

@@ -1,5 +1,6 @@
 #include <pebble.h>
 #include <alarm.h>
+#include <windowAlarm.h>
 
 void wakeup_handler(WakeupId id, int32_t reason) {
   APP_LOG(APP_LOG_LEVEL_INFO, "wakeup_handler()");
