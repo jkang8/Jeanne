@@ -1,7 +1,9 @@
 #include <pebble.h>
 #include <windowAlarm.h>
+#include <receive.h>
 
 #define PERSIST_KEY_WAKEUP_ID 42
+#define WAKEUP_REASON 0
 
 // external globals
 
@@ -14,6 +16,7 @@ static TextLayer *s_snooze_layer;
 static TextLayer *s_ty_layer;
 static Window *s_alarm_window;
 static ActionBarLayer *s_action_bar;
+static WakeupId s_wakeup_id;
 
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
     // Delete the ID 
