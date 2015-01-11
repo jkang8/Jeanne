@@ -3,9 +3,8 @@
 #include <callbacks.h>
 #include <TickHandler.h>
 #include <recieve.h> 
-  
-#define KEY_TEMPERATURE 0
-#define KEY_CONDITIONS 1
+#include <windowHome.h>
+#include <windowTimer.h>
   
 TextLayer *s_time_layer;
 
