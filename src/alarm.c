@@ -5,9 +5,6 @@
 
 #define WAKEUP_REASON 0
 #define PERSIST_KEY_WAKEUP_ID 42
-//#define number_pills 10
-//#define medication "viagra"
-//#define day TODAY
 
 WakeupId s_wakeup_id;
 extern TextLayer *s_output_layer;
