@@ -20,6 +20,9 @@ void window_home_load(Window *window) {
   int amount = persist_read_int(PERSIST_KEY_AMOUNT);
   char buffer[20];
   snprintf(buffer,20,"%d",amount);
+  
+  
+  
   text_layer_set_text(g_main_layer, buffer);
   
   // Display time on main window
@@ -45,4 +48,5 @@ void window_home_init(Window *window) {
 }
 
 void window_home_deinit(Window *window) {
+  window_destroy(s_window_home);
 }
