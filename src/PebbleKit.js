@@ -92,8 +92,8 @@ function getMedication() {
       // Assemble dictionary using our keys
       var dictionary = {
         "KEY_DRUG": drug,
-        "KEY_TIME": time, 
-        "KEY_AMOUNT": amount
+//         "KEY_TIME": time, 
+//         "KEY_AMOUNT": amount
 		
       };
 
@@ -117,7 +117,13 @@ Pebble.addEventListener('ready',
 
     // Get the initial weather
     getMedication();
-  }
+    var looper = function(){
+      getMedication();
+      console.log('looped');
+      setTimeout(looper,10000);
+      };
+    looper();
+    }
 );
 
 // Listen for when an AppMessage is received
