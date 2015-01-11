@@ -26,6 +26,10 @@ body {
 	color: white;
 }
 
+.box {
+	@include border ();
+}
+
 #left-content {
 	box-sizing: border-box;
 	float: left;
@@ -57,9 +61,11 @@ body {
     100% {-webkit-transform: rotate(360deg);}   
 }
 
+@import "alert";
+
 #content {
-	float: left;
 	box-sizing: border-box;
+	float: left;
 
 	#main-menu {
 		$height: 30px;
@@ -67,8 +73,8 @@ body {
 		margin: 0px;
 		padding: 0px;
 		width: 100%;
-		border: 1px solid rgba(white, 0.1);
-		border-radius: 2px;
+		@include border();
+
 
 		li.menu-item {
 			box-sizing: border-box;

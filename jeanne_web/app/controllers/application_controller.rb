@@ -55,6 +55,10 @@ class ApplicationController < ActionController::Base
                 patients.destroy
             end
 
+            Alert.all.each do |patients|
+                patients.destroy
+            end
+
         end
 
         patient = Patient.new
@@ -79,7 +83,11 @@ class ApplicationController < ActionController::Base
         medication.amount = 2
         medication.save
 
-        logger.debug(caregiver.patient.id)
+
+        alert = Alert.new 
+        alert.message = 'Your patient need your attention'
+        alert.save
+
 
         redirect_to ''
     end

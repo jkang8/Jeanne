@@ -1,0 +1,46 @@
+@import "standards";
+
+#alert-box {
+	box-sizing: border-box;
+	width: 100%;
+	@include border ();
+	margin-bottom: 5px;
+	background: $red;
+	opacity: 0.9;
+	
+	> div {
+		box-sizing: border-box;
+		padding: 5px;
+		width: 100%;
+	}
+	
+	.title {
+		font-size: 150%;
+		background: rgba(black, 0.1);
+	}
+
+
+	.message {
+		padding: 10px;
+
+		> div {
+			float: left;
+		}
+
+		.body {
+			width: 75%;
+			text-shadow: 2px 2px 1px rgba(black, 0.5);
+		}
+
+		.date {
+			font-weight: 300;
+			margin-left: 30px;
+		}
+
+		.delete {
+			float: right;
+			font-size: 150%;
+		}
+
+	}
+}
