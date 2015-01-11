@@ -18,6 +18,14 @@ static void tap_handler(AccelAxisType axis, int32_t direction) {
   case ACCEL_AXIS_Y:
   case ACCEL_AXIS_Z:
     if (direction != 0) {
+	  DictionaryIterator *iter;
+      app_message_outbox_begin(&iter);
+
+      // Add a key-value pair
+      dict_write_uint8(iter, 5, 5);
+
+      // Send the message!
+      app_message_outbox_send();
 	  window_stack_remove(g_window_help, true);
       window_stack_push(g_window_help, true);
 	  APP_LOG(APP_LOG_LEVEL_INFO, "push: help window");
