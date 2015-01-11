@@ -101,7 +101,7 @@ void window_alarm_load(Window *window) {
   // Create alarm TextLayer
   static char s_buffer[64];
   snprintf(s_buffer, sizeof(s_buffer), "It is time to take %d %s.", number_pills, drug_buffer);
-  s_alarm_layer = text_layer_create(GRect(5, 0, window_bounds.size.w - 5, 64));
+  s_alarm_layer = text_layer_create(GRect(5, 0, window_bounds.size.w - 40, 64));
   /*text_layer_set_background_color(s_alarm_layer, GColorBlack);
   APP_LOG(APP_LOG_LEVEL_INFO, "Background colored!");
   text_layer_set_text_color(s_alarm_layer, GColorWhite);
@@ -148,6 +148,7 @@ void window_alarm_init(Window *window) {
 	APP_LOG(APP_LOG_LEVEL_INFO, "ALARM: window_alarm_init()");
   // Create alarm Window
   g_window_alarm = window_create();
+  window_set_fullscreen(g_window_alarm,true);
   window_set_window_handlers(g_window_alarm, (WindowHandlers) {
     .load = window_alarm_load,
     .unload = window_alarm_unload
