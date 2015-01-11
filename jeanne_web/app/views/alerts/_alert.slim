@@ -1,7 +1,6 @@
-.message
-	.hidden value="#{alert.id}" id='alert-id'
-	.body #{alert.message}
-	.date time='#{alert.created_at.to_i}'
-	i.delete.fa.fa-times-circle
-.clear
+.message alert-id="#{alert.id}"
+	span.hidden value="#{alert.id}" id='alert-id'
+	span.body #{alert.message}
+	span.date time='#{alert.created_at.to_i}'
+	i.delete.fa.fa-times-circle.clear
 

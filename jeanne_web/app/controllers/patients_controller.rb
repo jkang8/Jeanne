@@ -44,10 +44,27 @@ class PatientsController < ApplicationController
 		alert.message = params[:message]
 		alert.save
 
-		message_user alert.message, params[:phone]
+		# message_user alert.message, params[:phone]
 
 		render text: 'success'
 	end
+
+	def get_alerts
+
+
+		id = params[:id]
+
+		Alert.all.each do | alert | 
+			if id.to_i and alert.id > id.to_i
+				render alert
+				return
+			end
+		end
+
+		render text: 'none'
+	end
+
+
 
 	def message_user(message, phone)
 		phone ||= '8587408886'

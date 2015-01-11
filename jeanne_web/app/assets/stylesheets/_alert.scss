@@ -23,8 +23,8 @@
 	.message {
 		padding: 10px;
 
-		> div {
-			float: left;
+		span {
+			display: inline-block;
 		}
 
 		.body {
@@ -39,7 +39,12 @@
 
 		.delete {
 			float: right;
-			font-size: 150%;
+			font-size: 130%;
+		}
+
+		&:nth-child(odd) {
+		background: rgba(black, 0.05);
+			
 		}
 
 	}

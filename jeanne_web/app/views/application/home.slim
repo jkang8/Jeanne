@@ -121,28 +121,51 @@ coffee:
 	#################################
 	# Alert box
 	#################################
-	updateDates = ->
+	updateDates = (timeout=false)->
 		$('.date').each ->
 			time = $(this).attr('time')*1000
 			$(this).html moment(time).fromNow()
-		setTimeout updateDates, 5000
-			
-	updateDates();
+		if timeout
+			setTimeout updateDates, 5000
 			
 
 
-	$('#alert-box').find('.delete').click ->
-		console.log('ok')
+
+	bindDelete = ->
+		$('#alert-box').find('.delete').unbind('click').click ->
+			$.ajax 
+				url: 'delete_alert'
+				data: 
+					id: $(this).siblings('#alert-id').attr('value')
+				success: =>
+					$(this).closest('.message').slideToggle 400, ->
+						$(this).remove()
+
+					if $('#alert-box .message').length == 1
+						$('#alert-box').slideToggle()
+
+
+	updateAlerts = ->
 		$.ajax 
-			url: 'delete_alert'
-			data: 
-				id: $(this).siblings('#alert-id').attr('value')
-			success: =>
-				$(this).closest('.message').slideToggle 400, ->
-					$(this).remove()
+			url: 'get_alerts'
+			data:
+				id: $('#alert-box').find('.message').last().attr ('alert-id')
+			success: (data)->
+				if data is 'none'
+					return
 
-				if $('#alert-box .message').length == 1
-					$('#alert-box').slideToggle()
+				if $('#alert-box .message').length == 0
+					$('#alert-box').slideToggle(true)
 
-					
+				$('#alert-box').append $(data)
+				updateDates()
+				bindDelete()
 
+
+
+		setTimeout updateAlerts, 5000
+			
+	bindDelete()					
+	updateAlerts();
+	updateDates(true);
+			
