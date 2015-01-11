@@ -4,8 +4,8 @@
 // external globals
 
 // static globals
-static Window *s_window_timer;
-static TextLayer *s_time_layer;
+// Window *s_window_timer;
+//static TextLayer *s_time_layer;
 
 void window_timer_load(Window *window) {
 }
