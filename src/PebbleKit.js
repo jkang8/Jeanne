@@ -35,11 +35,11 @@ function getMedication() {
       // responseText contains a JSON object with weather info
       var json = JSON.parse(responseText);
 
+      console.log("Medication is " + JSON.stringify(json));
       if (json.status == 'failure') {
         return;
       }
 
-      console.log("Medication is " + JSON.stringify(json));
 
       var amount = json.amount;
       console.log("Amount is : " + amount);
@@ -57,6 +57,9 @@ function getMedication() {
         "KEY_AMOUNT": amount
 		
       };
+
+      console.log('list'+ timestamps)
+      console.log('timetammp: '+time)
 
 
       if (timestamps.indexOf(time) >= 0) {
@@ -85,6 +88,7 @@ Pebble.addEventListener('ready',
     var looper = function() {
       getMedication();
       setTimeout(looper, 10000);
+      console.log('Looped');
     };
 
     looper();
