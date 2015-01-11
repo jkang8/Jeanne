@@ -15,6 +15,9 @@ static TextLayer *s_snooze_layer;
 static TextLayer *s_ty_layer;
 static ActionBarLayer *s_action_bar;
 static WakeupId s_wakeup_id;
+static GBitmap *s_check_bitmap;
+static GBitmap *s_click_bitmap;
+static GBitmap *s_snooze_bitmap;
 
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
 	APP_LOG(APP_LOG_LEVEL_INFO, "ALARM: select_click_handler()");
@@ -79,13 +82,21 @@ void window_alarm_load(Window *window) {
 
   // Initialize action bar
   s_action_bar = action_bar_layer_create();
+  
   // Associate the action bar with the window:
   action_bar_layer_add_to_window(s_action_bar, window);
+  
   // Set the click config provider:
   action_bar_layer_set_click_config_provider(s_action_bar, click_config_provider);
+  
   // Set the icons
-  action_bar_layer_set_icon(s_action_bar, BUTTON_ID_SELECT, resource_get_handle(RESOURCE_ID_IMAGE_NEXT));
-  action_bar_layer_set_icon(s_action_bar, BUTTON_ID_DOWN,   resource_get_handle(RESOURCE_ID_IMAGE_SNOOZE));
+  s_check_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_CHECK);
+  s_click_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_CLICK);
+  s_snooze_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_SNOOZE);
+  
+  action_bar_layer_set_icon(s_action_bar, BUTTON_ID_UP,     s_check_bitmap); 
+  action_bar_layer_set_icon(s_action_bar, BUTTON_ID_SELECT, s_click_bitmap);
+  action_bar_layer_set_icon(s_action_bar, BUTTON_ID_DOWN,   s_snooze_bitmap);
 
   // Create alarm TextLayer
   static char s_buffer[64];
@@ -127,6 +138,10 @@ void window_alarm_unload(Window *window) {
   text_layer_destroy(s_alarm_layer);
   text_layer_destroy(s_taken_layer);
   text_layer_destroy(s_snooze_layer);
+  
+  gbitmap_destroy(s_check_bitmap);
+  gbitmap_destroy(s_click_bitmap);
+  gbitmap_destroy(s_snooze_bitmap);
 }
 
 void window_alarm_init(Window *window) {

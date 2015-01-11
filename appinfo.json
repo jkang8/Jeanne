@@ -13,13 +13,9 @@
     "resources": {
         "media": [
             {
-                "file": "images/snooze.png",
-                "name": "IMAGE_SNOOZE",
-                "type": "png"
-            },
-            {
-                "file": "images/click.png",
-                "name": "IMAGE_CLICK",
+                "file": "images/cara2-01.png",
+                "menuIcon": true,
+                "name": "IMAGE_LOGO",
                 "type": "png"
             },
             {
@@ -28,9 +24,13 @@
                 "type": "png"
             },
             {
-                "file": "images/cara2-01.png",
-                "menuIcon": true,
-                "name": "IMAGE_LOGO",
+                "file": "images/click.png",
+                "name": "IMAGE_CLICK",
+                "type": "png"
+            },
+            {
+                "file": "images/snooze.png",
+                "name": "IMAGE_SNOOZE",
                 "type": "png"
             }
         ]
