@@ -2,6 +2,7 @@
 #include <alarm.h>
 #include <callbacks.h>
 #include <TickHandler.h>
+#include <recieve.h> 
   
 #define KEY_TEMPERATURE 0
 #define KEY_CONDITIONS 1
@@ -17,7 +18,10 @@ static void main_window_load(Window *window) {
   // Create output TextLayer
   s_output_layer = text_layer_create(GRect(0, 0, window_bounds.size.w, window_bounds.size.h));
   text_layer_set_text_alignment(s_output_layer, GTextAlignmentCenter);
-  text_layer_set_text(s_output_layer, "Press SELECT to schedule a Wakeup.");
+  int amount = persist_read_int(PERSIST_KEY_AMOUNT);
+  char buffer[20];
+  snprintf(buffer,20,"%d",amount);
+  text_layer_set_text(s_output_layer, buffer);
   layer_add_child(window_layer, text_layer_get_layer(s_output_layer));
 }
 
