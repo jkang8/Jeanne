@@ -11,6 +11,7 @@ li.medication id='med-#{id}'
 	        .item.label Take   
 	        = select(:medication, :amount, (1..100).to_a, {:include_blank => true},{class: 'item'})
 
+
 	        = f.text_field :name, {placeholder: 'Medication', class: 'item' }
 
 

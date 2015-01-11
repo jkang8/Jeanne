@@ -6,12 +6,12 @@ class PatientsController < ApplicationController
 
 	# Gets the events for today
 	def today
-		str = ''
+		str = "#{Time.now.wday} <br/>"
 		Patient.first.medications.order('time asc').each do |med|
 			med_days = decode med.days
 
-			if not med_days.include? Time.now.wday - 1
-				str += "passing  #{med.name}  --- #{med_days} XXX"
+			if not med_days.include? Time.now.wday
+				str += "passing  #{med.name}  --- #{med_days} <br/>"
 				next
 			end
 
@@ -20,7 +20,7 @@ class PatientsController < ApplicationController
 			min_now =  now.hour * 60 + now.min 
 
 			if min < min_now
-				str += "passing time #{med.name}  --- #{min} < #{min_now} XXX\n"
+				str += "passing time #{med.name}  --- #{min} < #{min_now} <br/>"
 				next
 			end
 
@@ -28,7 +28,18 @@ class PatientsController < ApplicationController
 			return
 		end
 
+		if params[:debug]
+			render text: str
+			return
+		end
+
 		render json: {status: 'failure'}
+		# render json: {
+		# 			status: 'success',
+		#  			time: (Time.now.to_i + 120),
+		#  			name: 'Advil',
+		#  			amount: 2
+		#  		}
 	end
 
 
@@ -41,10 +52,12 @@ class PatientsController < ApplicationController
 
 	def create_alert
 		alert = Alert.new
-		alert.message = params[:message]
+		
+		# alert.message = params[:message]
+		alert.message = "#{Patient.first.name} needs your attention";
 		alert.save
 
-		# message_user alert.message, params[:phone]
+		message_user alert.message, params[:phone]
 
 		render text: 'success'
 	end

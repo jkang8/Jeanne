@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400' rel='stylesheet' type='text/css'>
+<link href="assets/ui-elements.css" rel="stylesheet" type="text/css">
+<link href="assets/header.css" rel="stylesheet" type="text/css">
+<style type="text/css" media="screen">
+	/* line 1, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	#top {
+	  position: fixed;
+	  top: 0px;
+	  left: 0px;
+	  min-width: 500px;
+	  width: 100%;
+	  height: 800px;
+	  background-image: url('assets/neuronsWeb.jpg');
+	  background-repeat: no-repeat;
+	  background-size: 130%;
+	  z-index: -2;
+	  padding: 40px 0 40px 0;
+	}
+
+	/* line 20, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	#top img {
+	  display: block;
+	  margin: auto auto;
+	}
+
+	/* line 26, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	#topimg {
+	  padding-top: 70px;
+	}
+
+	/* line 37, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	body {
+	  margin: 0px;
+	  padding: 0px;
+	  min-width: 460px;
+	}
+
+	/* line 43, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	#cap {
+	  display: inline-block;
+	  width: 60%;
+	  text-align: center;
+	  height: auto;
+	  margin-left: 20%;
+	  margin-right: 20%;
+	  margin-top: 40px;
+	}
+
+	/* line 55, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	#cap img {
+	  width: 100%;
+	}
+
+	/* line 60, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	p {
+	  font-family: 'Source Sans Pro', Arial, sans-serif;
+	}
+
+	/* line 64, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	#about {
+	  position: absolute;
+	  top: 800px;
+	  height: 700px;
+	  box-shadow: 0px -2px 2px rgba(0, 0, 0, 0.3);
+	  background: #F69B84;
+	  padding-top: 200px;
+	  width: 100%;
+	}
+
+	/* line 75, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	#aboutwrap {
+	  padding-left: 20%;
+	  padding-right: 20%;
+	  display: inline-block;
+	}
+
+	/* line 81, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	#pebble img {
+	  display: inline-block;
+	  float: left;
+	  width: 40%;
+	}
+
+	/* line 90, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	#yee {
+	  display: inline-block;
+	  float: right;
+	  width: 55%;
+	  color: white;
+	  font-size: 21px;
+	  font-weight: 100;
+	}
+
+	/* line 101, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	#logo {
+	  float: left;
+	  padding-left: 40px;
+	}
+
+	/* line 106, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	#menu {
+	  float: right;
+	  padding-right: 40px;
+	  color: #00B1AC;
+	}
+
+	/* line 113, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	#hero {
+	  font-size: 61px;
+	  text-align: center;
+	  font-weight: lighter;
+	  margin-top: 20px;
+	  margin-bottom: 30px;
+	}
+
+	/* line 121, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	#subhero {
+	  font-size: 21px;
+	  text-align: center;
+	  font-weight: lighter;
+	  margin-top: 0px;
+	}
+
+	/* line 130, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	#header {
+	  z-index: -1;
+	  background: rgba(0, 0, 0, 0.2) !important;
+	  position: fixed;
+	  left: 0px;
+	  top: 0px;
+	  width: 100%;
+	}
+
+	/* line 139, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	#header .right-links {
+	  color: #1e1e1e;
+	  color: #1e1e1e;
+	}
+	/* line 143, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	#header .right-links:last-child {
+	  margin-right: 20px;
+	}
+	/* line 147, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	#header .right-links .link:hover {
+	  color: #5bc8c8;
+	}
+
+	/*******************************
+	* Links
+	*******************************/
+	/* line 156, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	a, a:visited {
+	  text-decoration: none;
+	  cursor: pointer;
+	  -webkit-transition: color 0.2s;
+	          transition: color 0.2s;
+	}
+
+	/* line 166, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	strong {
+	  color: white;
+	}
+
+	/* line 170, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	.button {
+	  position: relative;
+	  top: 60px;
+	  font-family: Source Sans Pro;
+	  font-weight: bold;
+	  line-height: 30px;
+	  font-size: 30px;
+	  padding: 15px 30px;
+	  border-radius: 3px;
+	  background: #00B2AC;
+	}
+	/* line 181, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	.button a {
+	  color: white !important;
+	}
+	/* line 185, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	.button:hover {
+	  background: #00cbc5;
+	}
+
+	/* line 192, /Users/alexrowe/Desktop/Jeanne/jeanne_web/app/assets/stylesheets/main.scss */
+	.loopy {
+	  text-align: center;
+	}
+</style>
+</head>
+
+
+<body>
+<%= render 'layouts/header.slim', login: true %>
+<div id= "top">
+
+	<div id="test">
+	<!-- <div id="logo"> -->
+    <!-- <img src = "assets/logo.png"  alt=""/> -->
+    <!-- </div> -->
+    
+    <!-- <div id="menu"> -->
+    	<!-- <p>About   |   Login</p> -->
+    <!-- </div> -->
+    </div>
+    
+	<div id="topimg">
+		<img src="assets/capabilities.png"  alt=""/>
+	</div>
+
+
+<p id="hero">Care with Confidence.</p>
+<p id="subhero">Manage the health of your loved-ones<br>using the Pebble Watch.</p>
+	
+</div>
+
+
+<div id="about">
+
+<div id="aboutwrap">
+
+<div id="pebble"><img src="assets/watch.png"  alt=""/></div>
+
+<div id="yee">
+<p style='font-size:150%'><strong>Cara helps you remotely manage 
+health regimens.</strong></p>
+
+<p>Use our web app to set medication 
+schedules, exercise goals, and nutrition 
+for the Pebble Watch.</p>
+
+<!-- <p>Then use our data visualization suite to  -->
+<!-- track the progress of treatment. </p> -->
+</div>
+</div>
+<div class='loopy'>
+	<span class="button">
+		<a href='/'>
+			Login
+		</a>
+	</span>
+</div>
+
+</div>
+
+
+</body>
+</html>
+
+
+

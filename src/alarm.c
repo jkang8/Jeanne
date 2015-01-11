@@ -1,5 +1,6 @@
 #include <pebble.h>
 #include <alarm.h>
+<<<<<<< HEAD
 #include <recieve.h>
 
 #define WAKEUP_REASON 0
@@ -150,4 +151,13 @@ void click_config_provider(void *context) {
   window_single_click_subscribe(BUTTON_ID_UP, up_click_handler); //set an alarm
   window_single_click_subscribe(BUTTON_ID_SELECT, select_click_handler); //taken
   window_single_click_subscribe(BUTTON_ID_DOWN, down_click_handler); //snooze
+=======
+#include <windowAlarm.h>
+
+void wakeup_handler(WakeupId id, int32_t reason) {
+  APP_LOG(APP_LOG_LEVEL_INFO, "ALARM: wakeup_handler()");
+  window_stack_remove(g_window_alarm, true);
+  window_stack_push(g_window_alarm, true);
+  APP_LOG(APP_LOG_LEVEL_INFO, "push: alarm window");
+>>>>>>> a0350ff1fe183f6e7494e1950080b479fe41e12d
 }

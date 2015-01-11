@@ -1,8 +1,8 @@
 {
     "appKeys": {
-        "KEY_TIME": 0,
+        "KEY_AMOUNT": 2,
         "KEY_DRUG": 1,
-		"KEY_AMOUNT": 2
+        "KEY_TIME": 0
     },
     "capabilities": [
         "location"
@@ -16,6 +16,21 @@
                 "file": "images/cara2-01.png",
                 "menuIcon": true,
                 "name": "IMAGE_LOGO",
+                "type": "png"
+            },
+            {
+                "file": "images/check.png",
+                "name": "IMAGE_CHECK",
+                "type": "png"
+            },
+            {
+                "file": "images/click.png",
+                "name": "IMAGE_CLICK",
+                "type": "png"
+            },
+            {
+                "file": "images/snooze.png",
+                "name": "IMAGE_SNOOZE",
                 "type": "png"
             }
         ]
