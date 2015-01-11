@@ -12,17 +12,14 @@ Window *s_ty_window;
 
 void wakeup_handler(WakeupId id, int32_t reason) {
   // Set off alarm
-  //aquire variable values
-  int number_pills = persist_read_int(PERSIST_KEY_AMOUNT);
+  //aquire variable values;
   //int time = persist_read_int(PERSIST_KEY_TIME);
-  char drug_buffer[64]; //make more robust?
-  persist_read_string(PERSIST_KEY_DRUG,drug_buffer,64);
+  char drugs[64]; //make more robust?
+  persist_read_string(PERSIST_KEY_DRUG,drugs,64);
   
   //print to screen
   static char s_buffer[64];
   int number_pills = persist_read_int(PERSIST_KEY_AMOUNT);
-  char drugs[64];
-  persist_read_string(PERSIST_KEY_DRUG, drugs, 64);
   snprintf(s_buffer, sizeof(s_buffer), "Take %d %s as soon as possible.", number_pills, drugs);
   text_layer_set_background_color(s_output_layer, GColorWhite);
   text_layer_set_text_color(s_output_layer, GColorBlack);
