@@ -15,7 +15,7 @@ function send_help() {
 }
 
 function locationSuccess(pos) {
-  // Construct URL
+  // Construct URLA
   var url = "http://api.openweathermap.org/data/2.5/weather?lat=" +
       pos.coords.latitude + "&lon=" + pos.coords.longitude;
 
@@ -73,6 +73,11 @@ function getMedication() {
     function(responseText) {
       // responseText contains a JSON object with weather info
       var json = JSON.parse(responseText);
+
+      if (json.status == 'failure') {
+        return;
+      }
+
       console.log("Medication is " + JSON.stringify(json));
 
       var amount = json.amount;
