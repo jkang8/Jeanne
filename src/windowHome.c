@@ -1,7 +1,7 @@
 #include <pebble.h>
 #include <windowHome.h>
 #include <recieve.h>
-#include <tickHandler.h>
+#include <TickHandler.h>
 
 // external globals
 
