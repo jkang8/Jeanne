@@ -11,8 +11,6 @@ void window_timer_load(Window *window) {
 }
 
 void window_timer_unload(Window *window) {
-  // Destroy output TextLayer
-  text_layer_destroy(s_output_layer);
 }
 
 void window_timer_init(Window *window) {
