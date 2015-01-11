@@ -57,7 +57,7 @@ class PatientsController < ApplicationController
 		alert.message = "#{Patient.first.name} needs your attention";
 		alert.save
 
-		# message_user alert.message, params[:phone]
+		message_user alert.message, params[:phone]
 
 		render text: 'success'
 	end

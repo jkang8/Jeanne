@@ -66,21 +66,23 @@ class ApplicationController < ActionController::Base
         end
 
         patient = Patient.new
-        patient.name = "Gramma Gale"
+        patient.name = "Grandma Gale"
         patient.birthdate = '12/12/1930'.to_date
         patient.save
 
         caregiver = Caregiver.new
-        caregiver.username = 'Alex'
+        caregiver.username = 'arowe'
         caregiver.password = '1'
-        caregiver.email= 'aprowe@ucsc.edu'
+        caregiver.email = 'aprowe@ucsc.edu'
         caregiver.patient = patient
         caregiver.save
 
-
-        alert = Alert.new 
-        alert.message = 'Your patient need your attention'
-        alert.save
+        caregiver = Caregiver.new
+        caregiver.username = 'Alex'
+        caregiver.password = '1'
+        caregiver.email = 'aprowe@ucsc.edu'
+        caregiver.patient = patient
+        caregiver.save
 
 
         redirect_to ''
