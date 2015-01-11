@@ -1,5 +1,6 @@
 #include <pebble.h>
 #include <windowThanks.h>
+#include <windowHome.h>
 
 // external globals
 Window *g_window_thanks;
