@@ -28,7 +28,7 @@ static void init(void) {
   }
   
   // Register with TickTimerService to poll the server
-  tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
+  tick_timer_service_subscribe(MINUTE_UNIT, tick_handler_medication);
   tick_timer_service_subscribe(MINUTE_UNIT, tick_handler_time);
   
    //
