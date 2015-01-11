@@ -13,7 +13,6 @@ static TextLayer *s_alarm_layer;
 static TextLayer *s_taken_layer;
 static TextLayer *s_snooze_layer;
 static TextLayer *s_ty_layer;
-static Window *s_alarm_window;
 static ActionBarLayer *s_action_bar;
 static WakeupId s_wakeup_id;
 
