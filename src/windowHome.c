@@ -8,7 +8,7 @@
 TextLayer *g_main_layer;
 
 // static globals
-static Window *s_window_home;
+Window *g_window_home;
 
 static void tap_handler(AccelAxisType axis, int32_t direction) {
   switch (axis) {
@@ -51,15 +51,15 @@ void window_home_unload(Window *window) {
 
 void window_home_init(Window *window) {
   // Create main Window
-  s_window_home = window_create();
-  window_set_fullscreen(s_window_home,true);
-  window_set_window_handlers(s_window_home, (WindowHandlers) {
+  g_window_home = window_create();
+  window_set_fullscreen(g_window_home,true);
+  window_set_window_handlers(g_window_home, (WindowHandlers) {
     .load = window_home_load,
     .unload = window_home_unload,
   });
-  window_stack_push(s_window_home, true);
+  window_stack_push(g_window_home, true);
 }
 
 void window_home_deinit(Window *window) {
-  window_destroy(s_window_home);
+  window_destroy(g_window_home);
 }

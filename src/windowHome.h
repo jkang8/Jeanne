@@ -6,3 +6,4 @@ extern void window_home_init();
 extern void window_home_deinit();
 
 extern TextLayer *g_main_layer;
+extern Window *g_window_home;
