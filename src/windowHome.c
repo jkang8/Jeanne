@@ -17,10 +17,12 @@ static void tap_handler(AccelAxisType axis, int32_t direction) {
   case ACCEL_AXIS_Y:
   case ACCEL_AXIS_Z:
     if (direction != 0) {
-		text_layer_set_text(g_main_layer, "Help request sent.");
+		text_layer_set_text(g_main_layer, "Help request sent");
+		  APP_LOG(APP_LOG_LEVEL_INFO, "help request sent");
 	    //Wait 3 seconds
-	    psleep(300); 
-	    text_layer_set_text(g_main_layer, "Tap for help.");
+	    psleep(3000); 
+	    text_layer_set_text(g_main_layer, "Tap for help");
+		  APP_LOG(APP_LOG_LEVEL_INFO, "tap for help");
 	}
     break;
   }
