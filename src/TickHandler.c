@@ -4,19 +4,19 @@ TextLayer* s_time_layer;
 
 void tick_handler_medication(struct tm *tick_time, TimeUnits units_changed) {
 
-  // Get medication update every 1 minutes
-  APP_LOG(APP_LOG_LEVEL_INFO, "tick_handler_medication()");
-  if(tick_time->tm_min % 1 == 0) {
-    // Begin dictionary
-    DictionaryIterator *iter;
-    app_message_outbox_begin(&iter);
+  // // Get medication update every 1 minutes
+  // APP_LOG(APP_LOG_LEVEL_INFO, "tick_handler_medication()");
+  // if(tick_time->tm_min % 1 == 0) {
+  //   // Begin dictionary
+  //   DictionaryIterator *iter;
+  //   app_message_outbox_begin(&iter);
 
-    // Add a key-value pair
-    dict_write_uint8(iter, 0, 0);
+  //   // Add a key-value pair
+  //   dict_write_uint8(iter, 0, 0);
 
-    // Send the message!
-    app_message_outbox_send();
-  }
+  //   // Send the message!
+  //   // app_message_outbox_send();
+  // }
 }
 
 void tick_handler_time(struct tm *tick_time, TimeUnits units_changed) {
