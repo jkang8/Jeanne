@@ -17,10 +17,8 @@ void window_home_load(Window *window) {
   // Create output TextLayer
   g_main_layer = text_layer_create(GRect(0, 0, window_bounds.size.w, window_bounds.size.h));
   text_layer_set_text_alignment(g_main_layer, GTextAlignmentCenter);
-  int amount = persist_read_int(PERSIST_KEY_AMOUNT);
-  char buffer[20];
-  snprintf(buffer,20,"%d",amount);
-  text_layer_set_text(g_main_layer, buffer);
+	text_layer_set_font(g_main_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
+  text_layer_set_text(g_main_layer, "Tap for help.");
   
   // Display time on main window
   layer_add_child(window_layer, text_layer_get_layer(g_main_layer));  
@@ -45,4 +43,5 @@ void window_home_init(Window *window) {
 }
 
 void window_home_deinit(Window *window) {
+  window_destroy(s_window_home);
 }
