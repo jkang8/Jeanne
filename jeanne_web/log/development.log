@@ -80243,3 +80243,138 @@ Geokit is using the domain: localhost
   [1m[36mAlert Load (0.2ms)[0m  [1mSELECT "alerts".* FROM "alerts"[0m
   Rendered text template (0.0ms)
 Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/get_alerts?id=48" for 127.0.0.1 at 2015-01-11 00:03:08 -0800
+Processing by PatientsController#get_alerts as */*
+  Parameters: {"id"=>"48"}
+Geokit is using the domain: localhost
+  [1m[35mAlert Load (0.2ms)[0m  SELECT "alerts".* FROM "alerts"
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/get_alerts?id=48" for 127.0.0.1 at 2015-01-11 00:03:14 -0800
+Processing by PatientsController#get_alerts as */*
+  Parameters: {"id"=>"48"}
+Geokit is using the domain: localhost
+  [1m[36mAlert Load (0.1ms)[0m  [1mSELECT "alerts".* FROM "alerts"[0m
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/get_alerts?id=48" for 127.0.0.1 at 2015-01-11 00:03:20 -0800
+Processing by PatientsController#get_alerts as */*
+  Parameters: {"id"=>"48"}
+Geokit is using the domain: localhost
+  [1m[35mAlert Load (0.1ms)[0m  SELECT "alerts".* FROM "alerts"
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/get_alerts?id=48" for 127.0.0.1 at 2015-01-11 00:03:26 -0800
+Processing by PatientsController#get_alerts as */*
+  Parameters: {"id"=>"48"}
+Geokit is using the domain: localhost
+  [1m[36mAlert Load (0.1ms)[0m  [1mSELECT "alerts".* FROM "alerts"[0m
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/get_alerts?id=48" for 127.0.0.1 at 2015-01-11 00:03:32 -0800
+Processing by PatientsController#get_alerts as */*
+  Parameters: {"id"=>"48"}
+Geokit is using the domain: localhost
+  [1m[35mAlert Load (0.2ms)[0m  SELECT "alerts".* FROM "alerts"
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/get_alerts?id=48" for 127.0.0.1 at 2015-01-11 00:03:38 -0800
+Processing by PatientsController#get_alerts as */*
+  Parameters: {"id"=>"48"}
+Geokit is using the domain: localhost
+  [1m[36mAlert Load (0.1ms)[0m  [1mSELECT "alerts".* FROM "alerts"[0m
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/get_alerts?id=48" for 127.0.0.1 at 2015-01-11 00:03:44 -0800
+Processing by PatientsController#get_alerts as */*
+  Parameters: {"id"=>"48"}
+Geokit is using the domain: localhost
+  [1m[35mAlert Load (0.2ms)[0m  SELECT "alerts".* FROM "alerts"
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/get_alerts?id=48" for 127.0.0.1 at 2015-01-11 00:03:50 -0800
+Processing by PatientsController#get_alerts as */*
+  Parameters: {"id"=>"48"}
+Geokit is using the domain: localhost
+  [1m[36mAlert Load (0.1ms)[0m  [1mSELECT "alerts".* FROM "alerts"[0m
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/get_alerts?id=48" for 127.0.0.1 at 2015-01-11 00:03:55 -0800
+Processing by PatientsController#get_alerts as */*
+  Parameters: {"id"=>"48"}
+Geokit is using the domain: localhost
+  [1m[35mAlert Load (0.1ms)[0m  SELECT "alerts".* FROM "alerts"
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/get_alerts?id=48" for 127.0.0.1 at 2015-01-11 00:04:03 -0800
+Processing by PatientsController#get_alerts as */*
+  Parameters: {"id"=>"48"}
+Geokit is using the domain: localhost
+  [1m[36mAlert Load (0.1ms)[0m  [1mSELECT "alerts".* FROM "alerts"[0m
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/get_alerts?id=48" for 127.0.0.1 at 2015-01-11 00:04:13 -0800
+Processing by PatientsController#get_alerts as */*
+  Parameters: {"id"=>"48"}
+Geokit is using the domain: localhost
+  [1m[35mAlert Load (0.1ms)[0m  SELECT "alerts".* FROM "alerts"
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/get_alerts?id=48" for 127.0.0.1 at 2015-01-11 00:04:19 -0800
+Processing by PatientsController#get_alerts as */*
+  Parameters: {"id"=>"48"}
+Geokit is using the domain: localhost
+  [1m[36mAlert Load (0.1ms)[0m  [1mSELECT "alerts".* FROM "alerts"[0m
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/get_alerts?id=48" for 127.0.0.1 at 2015-01-11 00:04:25 -0800
+Processing by PatientsController#get_alerts as */*
+  Parameters: {"id"=>"48"}
+Geokit is using the domain: localhost
+  [1m[35mAlert Load (0.1ms)[0m  SELECT "alerts".* FROM "alerts"
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/get_alerts?id=48" for 127.0.0.1 at 2015-01-11 00:04:34 -0800
+Processing by PatientsController#get_alerts as */*
+  Parameters: {"id"=>"48"}
+Geokit is using the domain: localhost
+  [1m[36mAlert Load (0.1ms)[0m  [1mSELECT "alerts".* FROM "alerts"[0m
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/get_alerts?id=48" for 127.0.0.1 at 2015-01-11 00:04:44 -0800
+Processing by PatientsController#get_alerts as */*
+  Parameters: {"id"=>"48"}
+Geokit is using the domain: localhost
+  [1m[35mAlert Load (0.1ms)[0m  SELECT "alerts".* FROM "alerts"
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)

@@ -28,7 +28,13 @@ class PatientsController < ApplicationController
 			return
 		end
 
-		render json: {status: 'failure'}
+		# render json: {status: 'failure'}
+		render json: {
+					status: 'success',
+		 			time: (Time.now.to_i + 120),
+		 			name: 'fake',
+		 			amount: 10
+		 		}
 	end
 
 
