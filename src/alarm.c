@@ -31,11 +31,10 @@ void check_wakeup() {
     // There is a wakeup scheduled soon
     time_t timestamp = 0;
     wakeup_query(s_wakeup_id, &timestamp);
-    float hours_remaining = (timestamp - time(NULL))/3600;
 
     // Show how many seconds to go
     static char s_buffer[64];
-    snprintf(s_buffer, sizeof(s_buffer), "Take %d %s in %f hours!", number_pills, medication, hours_remaining);
+    snprintf(s_buffer, sizeof(s_buffer), "Take %d %s!", number_pills, medication);
     text_layer_set_text(s_output_layer, s_buffer);
   }
 }
