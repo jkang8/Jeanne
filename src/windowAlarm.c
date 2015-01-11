@@ -1,6 +1,8 @@
 #include <pebble.h>
 #include <windowAlarm.h>
 
+#define PERSIST_KEY_WAKEUP_ID 42
+
 // external globals
 
 // static globals

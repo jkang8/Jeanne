@@ -2,7 +2,6 @@
 #include <alarm.h>
 
 #define WAKEUP_REASON 0
-#define PERSIST_KEY_WAKEUP_ID 42
 
 WakeupId s_wakeup_id;
 
