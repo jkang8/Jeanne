@@ -30,6 +30,7 @@ void window_thanks_load(Window *window) {
 	// Add bitmap smiley face
 	
 	// Thanks text layer
+	Layer *window_layer = window_get_root_layer(window);
 	s_ty_layer = text_layer_create(GRect(0, 100, 144, 86));
 	text_layer_set_text_alignment(s_ty_layer, GTextAlignmentCenter);
 	text_layer_set_font(s_ty_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
