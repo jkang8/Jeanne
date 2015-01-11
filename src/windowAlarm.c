@@ -1,5 +1,6 @@
 #include <pebble.h>
 #include <windowAlarm.h>
+#include <windowHome.h>
 #include <recieve.h>
 
 #define WAKEUP_REASON 0
@@ -31,7 +32,8 @@ static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
 	text_layer_set_text(s_ty_layer, "Thank you!");
 	//Wait 3 seconds
 	psleep(300); 
-	//call deinit?
+	window_stack_remove(g_window_home);
+	window_stack_push(g_window_home);
 }
 
 static void down_click_handler(ClickRecognizerRef recognizer, void *context) {

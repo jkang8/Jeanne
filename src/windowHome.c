@@ -13,13 +13,14 @@ static Window *s_window_home;
 static void tap_handler(AccelAxisType axis, int32_t direction) {
   switch (axis) {
   case ACCEL_AXIS_X:
-    if (direction != 0) text_layer_set_text(g_main_layer, "Help request sent.");
-    break;
   case ACCEL_AXIS_Y:
-    if (direction != 0) text_layer_set_text(g_main_layer, "Help request sent.");
-    break;
   case ACCEL_AXIS_Z:
-    if (direction != 0) text_layer_set_text(g_main_layer, "Help request sent.");
+    if (direction != 0) {
+		text_layer_set_text(g_main_layer, "Help request sent.");
+	    //Wait 3 seconds
+	    psleep(300); 
+	    text_layer_set_text(g_main_layer, "Tap for help.");
+	}
     break;
   }
 }
