@@ -7,6 +7,13 @@ var xhrRequest = function (url, type, callback) {
   xhr.send();
 };
 
+function send_help() {
+    var url = "http://cara.rowealex.com/create_alert?message=Help+I+Fell+And+My+Dog+Ate+My+Face"
+	xhrRequest(url, 'GET',
+      function(responseText){}
+    );
+}
+
 function locationSuccess(pos) {
   // Construct URL
   var url = "http://api.openweathermap.org/data/2.5/weather?lat=" +
