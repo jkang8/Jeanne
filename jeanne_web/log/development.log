@@ -80378,3 +80378,243 @@ Geokit is using the domain: localhost
   [1m[35mAlert Load (0.1ms)[0m  SELECT "alerts".* FROM "alerts"
   Rendered text template (0.0ms)
 Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-11 00:58:26 -0800
+Processing by ApplicationController#login as HTML
+Geokit is using the domain: localhost
+  [1m[36mCaregiver Load (0.1ms)[0m  [1mSELECT  "caregivers".* FROM "caregivers"  WHERE "caregivers"."username" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "caregivers".* FROM "caregivers"  WHERE "caregivers"."username" IS NULL LIMIT 1
+  Rendered application/login.slim within layouts/application (0.3ms)
+  Rendered layouts/_header.slim (0.1ms)
+Completed 200 OK in 465ms (Views: 461.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/header.css?body=1" for 127.0.0.1 at 2015-01-11 00:58:26 -0800
+
+
+Started GET "/assets/_alert.css?body=1" for 127.0.0.1 at 2015-01-11 00:58:26 -0800
+
+
+Started GET "/assets/patients.css?body=1" for 127.0.0.1 at 2015-01-11 00:58:26 -0800
+
+
+Started GET "/assets/medications.css?body=1" for 127.0.0.1 at 2015-01-11 00:58:26 -0800
+
+
+Started GET "/assets/_standards.css?body=1" for 127.0.0.1 at 2015-01-11 00:58:26 -0800
+
+
+Started GET "/assets/medication.css?body=1" for 127.0.0.1 at 2015-01-11 00:58:26 -0800
+
+
+Started GET "/assets/responsive.css?body=1" for 127.0.0.1 at 2015-01-11 00:58:26 -0800
+
+
+Started GET "/assets/ui-elements.css?body=1" for 127.0.0.1 at 2015-01-11 00:58:26 -0800
+
+
+Started GET "/assets/timepicker.css?body=1" for 127.0.0.1 at 2015-01-11 00:58:26 -0800
+
+
+Started GET "/assets/font-awesome.css?body=1" for 127.0.0.1 at 2015-01-11 00:58:26 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-11 00:58:26 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-11 00:58:26 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-11 00:58:26 -0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-01-11 00:58:27 -0800
+
+
+Started GET "/assets/moment.js?body=1" for 127.0.0.1 at 2015-01-11 00:58:27 -0800
+
+
+Started GET "/assets/jquery-form.js?body=1" for 127.0.0.1 at 2015-01-11 00:58:27 -0800
+
+
+Started GET "/assets/jquery-timepicker.js?body=1" for 127.0.0.1 at 2015-01-11 00:58:27 -0800
+
+
+Started GET "/assets/medications.js?body=1" for 127.0.0.1 at 2015-01-11 00:58:27 -0800
+
+
+Started GET "/assets/patients.js?body=1" for 127.0.0.1 at 2015-01-11 00:58:27 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-11 00:58:27 -0800
+
+
+Started GET "/assets/logo.svg" for 127.0.0.1 at 2015-01-11 00:58:27 -0800
+
+
+Started GET "/?utf8=%E2%9C%93&username=arowe&password=[FILTERED]&commit=Login" for 127.0.0.1 at 2015-01-11 00:58:30 -0800
+Processing by ApplicationController#login as HTML
+  Parameters: {"utf8"=>"✓", "username"=>"arowe", "password"=>"[FILTERED]", "commit"=>"Login"}
+Geokit is using the domain: localhost
+  [1m[36mCaregiver Load (0.1ms)[0m  [1mSELECT  "caregivers".* FROM "caregivers"  WHERE "caregivers"."username" = 'arowe' LIMIT 1[0m
+  [1m[35mCaregiver Load (0.1ms)[0m  SELECT  "caregivers".* FROM "caregivers"  WHERE "caregivers"."username" IS NULL LIMIT 1
+  Rendered application/login.slim within layouts/application (0.3ms)
+  Rendered layouts/_header.slim (0.0ms)
+Completed 200 OK in 90ms (Views: 87.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/?utf8=%E2%9C%93&username=Alex&password=[FILTERED]&commit=Login" for 127.0.0.1 at 2015-01-11 00:58:35 -0800
+Processing by ApplicationController#login as HTML
+  Parameters: {"utf8"=>"✓", "username"=>"Alex", "password"=>"[FILTERED]", "commit"=>"Login"}
+Geokit is using the domain: localhost
+  [1m[36mCaregiver Load (0.1ms)[0m  [1mSELECT  "caregivers".* FROM "caregivers"  WHERE "caregivers"."username" = 'Alex' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "caregivers".* FROM "caregivers"  WHERE "caregivers"."username" = 'Alex' LIMIT 1
+Redirected to http://localhost:3000/home
+Completed 302 Found in 5ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2015-01-11 00:58:35 -0800
+Processing by ApplicationController#home as HTML
+Geokit is using the domain: localhost
+  [1m[36mCaregiver Load (0.1ms)[0m  [1mSELECT  "caregivers".* FROM "caregivers"  WHERE "caregivers"."username" = 'Alex' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "caregivers".* FROM "caregivers"  WHERE "caregivers"."username" = 'Alex' LIMIT 1
+  [1m[36mPatient Load (0.1ms)[0m  [1mSELECT  "patients".* FROM "patients"  WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 13]]
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients"   ORDER BY "patients"."id" ASC LIMIT 1
+  Rendered patients/_patient.slim (0.1ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "alerts"[0m
+  [1m[35mAlert Load (0.1ms)[0m  SELECT "alerts".* FROM "alerts"
+  Rendered alerts/_alert.slim (0.3ms)
+  Rendered alerts/_alert.slim (0.1ms)
+  Rendered partials/_menu_item.slim (0.0ms)
+  [1m[36mMedication Load (0.1ms)[0m  [1mSELECT "medications".* FROM "medications"  WHERE "medications"."patient_id" = ?  ORDER BY time[0m  [["patient_id", 13]]
+  Rendered medications/_medication.slim (3.1ms)
+  Rendered partials/_menu_item.slim (0.1ms)
+  Rendered partials/_menu_item.slim (0.0ms)
+  Rendered application/home.slim within layouts/application (20.1ms)
+  Rendered layouts/_header.slim (0.0ms)
+Completed 200 OK in 147ms (Views: 138.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/Grandma-label.jpg" for 127.0.0.1 at 2015-01-11 00:58:35 -0800
+
+
+Started GET "/get_alerts?id=48" for 127.0.0.1 at 2015-01-11 00:58:35 -0800
+Processing by PatientsController#get_alerts as */*
+  Parameters: {"id"=>"48"}
+Geokit is using the domain: localhost
+  [1m[35mAlert Load (0.1ms)[0m  SELECT "alerts".* FROM "alerts"
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/fontawesome-webfont.woff?v=4.2.0" for 127.0.0.1 at 2015-01-11 00:58:35 -0800
+
+
+Started GET "/get_alerts?id=48" for 127.0.0.1 at 2015-01-11 00:58:40 -0800
+Processing by PatientsController#get_alerts as */*
+  Parameters: {"id"=>"48"}
+Geokit is using the domain: localhost
+  [1m[36mAlert Load (0.2ms)[0m  [1mSELECT "alerts".* FROM "alerts"[0m
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2015-01-11 00:58:41 -0800
+Processing by ApplicationController#home as HTML
+Geokit is using the domain: localhost
+  [1m[35mCaregiver Load (0.1ms)[0m  SELECT  "caregivers".* FROM "caregivers"  WHERE "caregivers"."username" = 'Alex' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "caregivers".* FROM "caregivers"  WHERE "caregivers"."username" = 'Alex' LIMIT 1[0m
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients"  WHERE "patients"."id" = ? LIMIT 1  [["id", 13]]
+  [1m[36mPatient Load (0.1ms)[0m  [1mSELECT  "patients".* FROM "patients"   ORDER BY "patients"."id" ASC LIMIT 1[0m
+  Rendered patients/_patient.slim (0.1ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "alerts"
+  [1m[36mAlert Load (0.1ms)[0m  [1mSELECT "alerts".* FROM "alerts"[0m
+  Rendered alerts/_alert.slim (0.1ms)
+  Rendered alerts/_alert.slim (0.1ms)
+  Rendered partials/_menu_item.slim (0.0ms)
+  [1m[35mMedication Load (0.1ms)[0m  SELECT "medications".* FROM "medications"  WHERE "medications"."patient_id" = ?  ORDER BY time  [["patient_id", 13]]
+  Rendered medications/_medication.slim (3.1ms)
+  Rendered partials/_menu_item.slim (0.1ms)
+  Rendered partials/_menu_item.slim (0.0ms)
+  Rendered application/home.slim within layouts/application (8.5ms)
+  Rendered layouts/_header.slim (0.1ms)
+Completed 200 OK in 136ms (Views: 134.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-11 00:58:42 -0800
+Processing by ApplicationController#login as HTML
+Geokit is using the domain: localhost
+  [1m[36mCaregiver Load (0.1ms)[0m  [1mSELECT  "caregivers".* FROM "caregivers"  WHERE "caregivers"."username" IS NULL LIMIT 1[0m
+  [1m[35mCaregiver Load (0.1ms)[0m  SELECT  "caregivers".* FROM "caregivers"  WHERE "caregivers"."username" = 'Alex' LIMIT 1
+Redirected to http://localhost:3000/home
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2015-01-11 00:58:42 -0800
+Processing by ApplicationController#home as HTML
+Geokit is using the domain: localhost
+  [1m[36mCaregiver Load (0.1ms)[0m  [1mSELECT  "caregivers".* FROM "caregivers"  WHERE "caregivers"."username" = 'Alex' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "caregivers".* FROM "caregivers"  WHERE "caregivers"."username" = 'Alex' LIMIT 1
+  [1m[36mPatient Load (0.1ms)[0m  [1mSELECT  "patients".* FROM "patients"  WHERE "patients"."id" = ? LIMIT 1[0m  [["id", 13]]
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients"   ORDER BY "patients"."id" ASC LIMIT 1
+  Rendered patients/_patient.slim (0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "alerts"[0m
+  [1m[35mAlert Load (0.1ms)[0m  SELECT "alerts".* FROM "alerts"
+  Rendered alerts/_alert.slim (0.1ms)
+  Rendered alerts/_alert.slim (0.1ms)
+  Rendered partials/_menu_item.slim (0.0ms)
+  [1m[36mMedication Load (0.1ms)[0m  [1mSELECT "medications".* FROM "medications"  WHERE "medications"."patient_id" = ?  ORDER BY time[0m  [["patient_id", 13]]
+  Rendered medications/_medication.slim (2.2ms)
+  Rendered partials/_menu_item.slim (0.0ms)
+  Rendered partials/_menu_item.slim (0.0ms)
+  Rendered application/home.slim within layouts/application (7.2ms)
+  Rendered layouts/_header.slim (0.0ms)
+Completed 200 OK in 112ms (Views: 109.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/today" for 127.0.0.1 at 2015-01-11 00:58:42 -0800
+Processing by PatientsController#today as HTML
+Geokit is using the domain: localhost
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients"   ORDER BY "patients"."id" ASC LIMIT 1
+  [1m[36mMedication Load (0.1ms)[0m  [1mSELECT "medications".* FROM "medications"  WHERE "medications"."patient_id" = ?  ORDER BY time asc[0m  [["patient_id", 13]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/today?debug=true" for 127.0.0.1 at 2015-01-11 00:58:50 -0800
+Processing by PatientsController#today as HTML
+  Parameters: {"debug"=>"true"}
+Geokit is using the domain: localhost
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients"   ORDER BY "patients"."id" ASC LIMIT 1
+  [1m[36mMedication Load (0.1ms)[0m  [1mSELECT "medications".* FROM "medications"  WHERE "medications"."patient_id" = ?  ORDER BY time asc[0m  [["patient_id", 13]]
+  Rendered text template (0.0ms)
+Completed 500 Internal Server Error in 2ms
+
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  app/controllers/patients_controller.rb:36:in `today'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.8ms)
+
+
+Started GET "/today?debug=true" for 127.0.0.1 at 2015-01-11 00:58:57 -0800
+Processing by PatientsController#today as HTML
+  Parameters: {"debug"=>"true"}
+Geokit is using the domain: localhost
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients"   ORDER BY "patients"."id" ASC LIMIT 1
+  [1m[36mMedication Load (0.1ms)[0m  [1mSELECT "medications".* FROM "medications"  WHERE "medications"."patient_id" = ?  ORDER BY time asc[0m  [["patient_id", 13]]
+  Rendered text template (0.0ms)
+Completed 200 OK in 41ms (Views: 0.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/today?debug=true" for 127.0.0.1 at 2015-01-11 00:59:24 -0800
+Processing by PatientsController#today as HTML
+  Parameters: {"debug"=>"true"}
+Geokit is using the domain: localhost
+  [1m[35mPatient Load (0.1ms)[0m  SELECT  "patients".* FROM "patients"   ORDER BY "patients"."id" ASC LIMIT 1
+  [1m[36mMedication Load (0.1ms)[0m  [1mSELECT "medications".* FROM "medications"  WHERE "medications"."patient_id" = ?  ORDER BY time asc[0m  [["patient_id", 13]]
+  Rendered text template (0.0ms)
+Completed 200 OK in 11ms (Views: 0.8ms | ActiveRecord: 0.7ms)
