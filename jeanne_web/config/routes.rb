@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'application#login'
+
+  get 'index' => 'application#index'
+  
   get 'init' => 'application#init'
   get 'home' => 'application#home'
   get 'clear' => 'application#clear'
