@@ -34,7 +34,7 @@ void window_thanks_load(Window *window) {
 	s_ty_layer = text_layer_create(GRect(0, 100, 144, 86));
 	text_layer_set_text_alignment(s_ty_layer, GTextAlignmentCenter);
 	text_layer_set_font(s_ty_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
-	text_layer_set_text(s_ty_layer, "Thank you!");
+	text_layer_set_text(s_ty_layer, "Thank you! Please tap to confirm.");
 	layer_add_child(window_layer, text_layer_get_layer(s_ty_layer)); 
 	accel_tap_service_subscribe(tap_handler); 
 }
