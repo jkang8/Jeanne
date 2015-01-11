@@ -9,6 +9,7 @@
   
 Window *s_main_window;
 TextLayer *s_output_layer;
+TextLayer *s_time_layer;
 
 
 static void main_window_load(Window *window) {
@@ -22,7 +23,13 @@ static void main_window_load(Window *window) {
   char buffer[20];
   snprintf(buffer,20,"%d",amount);
   text_layer_set_text(s_output_layer, buffer);
-  layer_add_child(window_layer, text_layer_get_layer(s_output_layer));
+  
+  // Display time on main window
+  layer_add_child(window_layer, text_layer_get_layer(s_output_layer));  
+  update_time();
+  
+  // Add it as a child layer to the Window's root layer
+  layer_add_child(window_get_root_layer(window), text_layer_get_layer(s_time_layer));
 }
 
 static void main_window_unload(Window *window) {
@@ -59,7 +66,7 @@ static void init(void) {
   
   // Register with TickTimerService to poll the server
   tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
-  
+  tick_timer_service_subscribe(MINUTE_UNIT, tick_handler_time);
    //
    // Set up message passing to server
    //
