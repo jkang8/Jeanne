@@ -52,7 +52,9 @@ class PatientsController < ApplicationController
 
 	def create_alert
 		alert = Alert.new
-		alert.message = params[:message]
+		
+		# alert.message = params[:message]
+		alert.message = "#{Patient.first.name} needs your attention";
 		alert.save
 
 		# message_user alert.message, params[:phone]
