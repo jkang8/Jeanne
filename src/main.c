@@ -4,7 +4,7 @@
 #include <TickHandler.h>
 #include <recieve.h> 
 #include <windowHome.h>
-#include <windowTimer.h>
+#include <windowAlarm.h>
  
 static void init(void) {
   window_home_init();
