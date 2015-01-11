@@ -32,8 +32,8 @@ static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
 	text_layer_set_text(s_ty_layer, "Thank you!");
 	//Wait 3 seconds
 	psleep(300); 
-	window_stack_remove(g_window_home);
-	window_stack_push(g_window_home);
+	window_stack_remove(g_window_home,true);
+	window_stack_push(g_window_home,true);
 }
 
 static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
