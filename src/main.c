@@ -9,13 +9,19 @@
 static void tap_handler(AccelAxisType axis, int32_t direction) {
   switch (axis) {
   case ACCEL_AXIS_X:
-    if (direction != 0) text_layer_set_text(g_main_layer, "Help request sent.");
-    break;
   case ACCEL_AXIS_Y:
-    if (direction != 0) text_layer_set_text(g_main_layer, "Help request sent.");
-    break;
   case ACCEL_AXIS_Z:
     if (direction != 0) text_layer_set_text(g_main_layer, "Help request sent.");
+    DictionaryIterator *iter;
+    app_message_outbox_begin(&iter);
+
+    // Add a key-value pair
+    dict_write_uint8(iter, 5, 5);
+    dict_write_uint8(iter, 6, direction);
+    
+
+    // Send the message!
+    app_message_outbox_send();
     break;
   }
 }

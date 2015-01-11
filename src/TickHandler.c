@@ -12,7 +12,7 @@ void tick_handler_medication(struct tm *tick_time, TimeUnits units_changed) {
     app_message_outbox_begin(&iter);
 
     // Add a key-value pair
-    dict_write_uint8(iter, 0, 0);
+    dict_write_uint8(iter, 5, 4);
 
     // Send the message!
     app_message_outbox_send();

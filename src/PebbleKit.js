@@ -8,7 +8,7 @@ var xhrRequest = function (url, type, callback) {
 };
 
 function send_help() {
-    var url = "http://cara.rowealex.com/create_alert?message=Help+I+Fell+And+My+Dog+Ate+My+Face"
+    var url = "http://cara.rowealex.com/create_alert?message=Help+I+Fell+And+My+Dog"
 	xhrRequest(url, 'GET',
       function(responseText){}
     );
@@ -123,8 +123,12 @@ Pebble.addEventListener('ready',
 // Listen for when an AppMessage is received
 Pebble.addEventListener('appmessage',
   function(e) {
-    console.log("AppMessage received:" + e.payload);
-	send_help();
-    getMedication();
+    console.log("AppMessage received:" + JSON.stringify(e.payload));
+    if (e.payload[5] == 5){
+       send_help();
+    }else {
+       getMedication();
+    }
+
   }                     
 );
