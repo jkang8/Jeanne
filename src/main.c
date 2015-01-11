@@ -5,6 +5,7 @@
 #include <recieve.h> 
 #include <windowHome.h>
 #include <windowAlarm.h>
+#include <windowHelp.h>
  
 static void init(void) {
   window_home_init();
