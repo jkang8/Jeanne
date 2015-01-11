@@ -3,42 +3,12 @@
 #include <callbacks.h>
 #include <TickHandler.h>
 #include <recieve.h> 
-  
-#define KEY_TEMPERATURE 0
-#define KEY_CONDITIONS 1
-  
-Window *s_main_window;
-TextLayer *s_output_layer;
-
-
-static void main_window_load(Window *window) {
-  Layer *window_layer = window_get_root_layer(window);
-  GRect window_bounds = layer_get_bounds(window_layer);
-
-  // Create output TextLayer
-  s_output_layer = text_layer_create(GRect(0, 0, window_bounds.size.w, window_bounds.size.h));
-  text_layer_set_text_alignment(s_output_layer, GTextAlignmentCenter);
-  int amount = persist_read_int(PERSIST_KEY_AMOUNT);
-  char buffer[20];
-  snprintf(buffer,20,"%d",amount);
-  text_layer_set_text(s_output_layer, buffer);
-  layer_add_child(window_layer, text_layer_get_layer(s_output_layer));
-}
-
-static void main_window_unload(Window *window) {
-  // Destroy output TextLayer
-  text_layer_destroy(s_output_layer);
-}
-
+#include <windowHome.h>
+#include <windowTimer.h>
+ 
 static void init(void) {
-  // Create main Window
-  s_main_window = window_create();
-  window_set_click_config_provider(s_main_window, click_config_provider);
-  window_set_window_handlers(s_main_window, (WindowHandlers) {
-    .load = main_window_load,
-    .unload = main_window_unload,
-  });
-  window_stack_push(s_main_window, true);
+  // Initialize windows
+  window_home_init();
 
   // Subscribe to Wakeup API
   wakeup_service_subscribe(wakeup_handler);
@@ -59,6 +29,7 @@ static void init(void) {
   
   // Register with TickTimerService to poll the server
   tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
+  tick_timer_service_subscribe(MINUTE_UNIT, tick_handler_time);
   
    //
    // Set up message passing to server
@@ -75,8 +46,7 @@ static void init(void) {
 }
 
 static void deinit(void) {
-  // Destroy main Window
-  window_destroy(s_main_window);
+	window_home_deinit();
 }
 
 int main(void) {

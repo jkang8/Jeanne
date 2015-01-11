@@ -75,13 +75,14 @@ function getMedication() {
       console.log("Drug is " + drug);
 
       var time = json.time;      
-      console.log("Conditions are " + time);
+      console.log("Time are " + time);
 
       // Assemble dictionary using our keys
       var dictionary = {
-        "KEY_AMOUNT": amount,
         "KEY_DRUG": drug,
-		"KEY_TIME": time 
+        "KEY_TIME": time, 
+        "KEY_AMOUNT": amount
+		
       };
 
       // Send to Pebble
