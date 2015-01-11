@@ -1,14 +1,15 @@
 #include <pebble.h>
 #include <windowHome.h>
+#include <windowHelp.h>
 #include <recieve.h>
 #include <TickHandler.h>
 #include <alarm.h>
 
 // external globals
-TextLayer *g_main_layer;
+Window *g_window_home;
 
 // static globals
-Window *g_window_home;
+static TextLayer *s_home_layer;
 
 static void tap_handler(AccelAxisType axis, int32_t direction) {
   APP_LOG(APP_LOG_LEVEL_INFO, "tap_handler()");
@@ -17,18 +18,9 @@ static void tap_handler(AccelAxisType axis, int32_t direction) {
   case ACCEL_AXIS_Y:
   case ACCEL_AXIS_Z:
     if (direction != 0) {
-	  vibes_long_pulse();
-      layer_remove_child_layers(window_get_root_layer(g_window_home));
-      text_layer_set_text(g_main_layer, "Help request sent");
-	  layer_add_child(window_get_root_layer(g_window_home), text_layer_get_layer(g_main_layer)); 
-	  APP_LOG(APP_LOG_LEVEL_INFO, "help request sent");
-	  //Wait 3 seconds
-	  psleep(3000); 
-      vibes_long_pulse();
-      layer_remove_child_layers(window_get_root_layer(g_window_home));
-      text_layer_set_text(g_main_layer, "Tap for help");
-	  layer_add_child(window_get_root_layer(g_window_home), text_layer_get_layer(g_main_layer)); 
-      APP_LOG(APP_LOG_LEVEL_INFO, "tap for help");
+	  window_stack_remove(g_window_help, true);
+      window_stack_push(g_window_help, true);
+	  APP_LOG(APP_LOG_LEVEL_INFO, "push: help window");
 	}
     break;
   }
@@ -39,22 +31,20 @@ void window_home_load(Window *window) {
   GRect window_bounds = layer_get_bounds(window_layer);
 
   // Create output TextLayer
-  g_main_layer = text_layer_create(GRect(0, 0, window_bounds.size.w, window_bounds.size.h));
-  text_layer_set_text_alignment(g_main_layer, GTextAlignmentCenter);
-  text_layer_set_font(g_main_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
-  text_layer_set_text(g_main_layer, "Tap for help.");
+  s_home_layer = text_layer_create(GRect(0, 0, window_bounds.size.w, window_bounds.size.h));
+  text_layer_set_text_alignment(s_home_layer, GTextAlignmentCenter);
+  text_layer_set_font(s_home_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
+  text_layer_set_text(s_home_layer, "Tap for help.");
   
   // Display time on main window
-  layer_add_child(window_layer, text_layer_get_layer(g_main_layer)); 
+  layer_add_child(window_layer, text_layer_get_layer(s_home_layer)); 
 
   accel_tap_service_subscribe(tap_handler);  
-  
 }
 
 void window_home_unload(Window *window) {
   accel_tap_service_unsubscribe();
-  text_layer_destroy(g_main_layer);
-  
+  text_layer_destroy(s_home_layer);
 }
 
 void window_home_init(Window *window) {

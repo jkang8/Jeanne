@@ -6,10 +6,9 @@
 #define WAKEUP_REASON 0
 
 // external globals
-
-// static globals
 Window *g_window_alarm;
 
+// static globals
 static TextLayer *s_alarm_layer;
 static TextLayer *s_taken_layer;
 static TextLayer *s_snooze_layer;
