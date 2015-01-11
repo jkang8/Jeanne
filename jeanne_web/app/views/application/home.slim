@@ -1,12 +1,19 @@
 
+
+
 #left-content
 	= render Patient.first
 
 
 #content
+	- display = Alert.all.count > 0 ? 'block' : 'none'
+	#alert-box style='display:#{display}'
+		.title.fa.fa-exclamation-circle   Alert
+		- Alert.all.each do | alert | 
+			= render alert
+
+
 	ul#main-menu
-
-
 		li.menu-item
 			= render "partials/menu_item", {title: 'Medication', icon: 'fa-medkit'}
 			.menu-content
@@ -109,4 +116,33 @@ coffee:
 
 		medication
 			.find('#new').click()
+
+
+	#################################
+	# Alert box
+	#################################
+	updateDates = ->
+		$('.date').each ->
+			time = $(this).attr('time')*1000
+			$(this).html moment(time).fromNow()
+		setTimeout updateDates, 5000
+			
+	updateDates();
+			
+
+
+	$('#alert-box').find('.delete').click ->
+		console.log('ok')
+		$.ajax 
+			url: 'delete_alert'
+			data: 
+				id: $(this).siblings('#alert-id').attr('value')
+			success: =>
+				$(this).closest('.message').slideToggle 400, ->
+					$(this).remove()
+
+				if $('#alert-box .message').length == 1
+					$('#alert-box').slideToggle()
+
+					
 

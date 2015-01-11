@@ -1,0 +1,7 @@
+.message
+	.hidden value="#{alert.id}" id='alert-id'
+	.body #{alert.message}
+	.date time='#{alert.created_at.to_i}'
+	i.delete.fa.fa-times-circle
+.clear
+
