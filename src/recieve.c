@@ -9,6 +9,11 @@ void receive_key_value(Tuple *t) {
       persist_write_int(PERSIST_KEY_TIME, t->value->int32);
   	  make_wakeup(persist_read_int(PERSIST_KEY_TIME));
 	  //make_wakeup(time(NULL)+5);
+	  char buffer[100];
+      snprintf(buffer, 100, "time value = %d",(int)persist_read_int(PERSIST_KEY_TIME));
+      APP_LOG(APP_LOG_LEVEL_INFO, buffer);
+      snprintf(buffer, 100, "time curr+5 = %d",(int)time(NULL)+5);
+      APP_LOG(APP_LOG_LEVEL_INFO, buffer);
       break;
     case 1:
       persist_write_string(PERSIST_KEY_DRUG,t->value->cstring);
