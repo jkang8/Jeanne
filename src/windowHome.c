@@ -24,11 +24,7 @@ void window_home_load(Window *window) {
   
   // Display time on main window
   layer_add_child(window_layer, text_layer_get_layer(g_main_layer));  
-  update_time();
   
-  // Add it as a child layer to the Window's root layer
-  // CRASHES! s_time_layer is NULL
-  //layer_add_child(window_get_root_layer(window), text_layer_get_layer(s_time_layer));
 }
 
 void window_home_unload(Window *window) {
