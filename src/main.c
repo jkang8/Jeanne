@@ -42,7 +42,7 @@ static void init(void) {
   app_message_open(app_message_inbox_size_maximum(), app_message_outbox_size_maximum());
 }
 
-static void deinit(void) 
+static void deinit(void) {
 	tick_timer_service_unsubscribe();
 	window_home_deinit();
 	window_alarm_deinit();
