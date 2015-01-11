@@ -1,6 +1,6 @@
 #include <pebble.h>
 #include <windowAlarm.h>
-#include <receive.h>
+#include <recieve.h>
 
 #define WAKEUP_REASON 0
 
