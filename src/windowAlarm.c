@@ -87,8 +87,10 @@ void window_alarm_load(Window *window) {
   action_bar_layer_add_to_window(s_action_bar, window);
   
   // Set the click config provider:
+  APP_LOG(APP_LOG_LEVEL_INFO, "ALARM: before action_bar_layer_set_click_config_provider()");
   action_bar_layer_set_click_config_provider(s_action_bar, click_config_provider);
-  
+  APP_LOG(APP_LOG_LEVEL_INFO, "ALARM: after action_bar_layer_set_click_config_provider()");
+
   // Set the icons
   s_check_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_CHECK);
   s_click_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_CLICK);
