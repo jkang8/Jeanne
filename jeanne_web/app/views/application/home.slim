@@ -18,7 +18,7 @@
 			= render "partials/menu_item", {title: 'Medication', icon: 'fa-medkit'}
 			.menu-content
 				ul#medication-list
-			        - @patient.medications.each do | med |
+			        - @patient.medications.order('time').each do | med |
 			        	= render med
 			        - medication = Medication.new
 			        - medication.patient = @patient
@@ -54,7 +54,7 @@ coffee:
 	#################################
 	# Initialize Timepicker
 	#################################
-	$('.timepicker').timepicker()
+	$('.timepicker').timepicker({step:1})
 
 	#################################
 	# New / Edit Medication
