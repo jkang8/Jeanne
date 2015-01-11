@@ -1,10 +1,21 @@
 
+// $blue: #22475E;
+// $teal: #75B08A;
+// $yellow: #F0E797;
+// $peach: #FF9D84;
+// $red: #FF5460;
+// $lightblue: #00B2AD;
+
 $blue: #22475E;
 $teal: #75B08A;
 $yellow: #F0E797;
 $peach: #FF9D84;
 $red: #FF5460;
 $lightblue: #00B2AD;
+
+$blue: #4187B2;
+$peach: $yellow;
+
 
 @mixin border () {
 	border: none;

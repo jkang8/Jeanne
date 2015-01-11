@@ -4,10 +4,15 @@
 
 #define WAKEUP_REASON 0
 #define PERSIST_KEY_WAKEUP_ID 42
+<<<<<<< HEAD
 //#define number_pills 10
 //#define medication "viagra"
 //#define day TODAY
 
+=======
+#define medication "viagra"
+#define day TODAY
+>>>>>>> 41af45cf7af3ffb7574b0e3c674218384f424752
 WakeupId s_wakeup_id;
 extern TextLayer *s_output_layer;
 Window *s_ty_window;
@@ -22,7 +27,14 @@ void wakeup_handler(WakeupId id, int32_t reason) {
   
   //print to screen
   static char s_buffer[64];
+<<<<<<< HEAD
   snprintf(s_buffer, sizeof(s_buffer), "Take %d %s.", number_pills, drug_buffer);
+=======
+  int number_pills = persist_read_int(PERSIST_KEY_AMOUNT);
+  char drugs[64];
+  persist_read_string(PERSIST_KEY_DRUG, drugs, 64);
+  snprintf(s_buffer, sizeof(s_buffer), "Take %d %s as soon as possible.", number_pills, drugs);
+>>>>>>> 41af45cf7af3ffb7574b0e3c674218384f424752
   text_layer_set_background_color(s_output_layer, GColorWhite);
   text_layer_set_text_color(s_output_layer, GColorBlack);
   text_layer_set_text_alignment(s_output_layer, GTextAlignmentLeft);
@@ -40,7 +52,23 @@ void wakeup_handler(WakeupId id, int32_t reason) {
 }
 
 void check_wakeup() {
+<<<<<<< HEAD
   //useless stuff for other functions
+=======
+  // Get the ID
+  s_wakeup_id = persist_read_int(PERSIST_KEY_TIME);
+  
+  if (s_wakeup_id > 0) {
+    // There is a wakeup scheduled soon
+    time_t timestamp = 0;
+    wakeup_query(s_wakeup_id, &timestamp);
+
+    // Show how many seconds to go
+    static char s_buffer[64];
+    snprintf(s_buffer, sizeof(s_buffer), "Take %d %s!", number_pills, medication);
+    text_layer_set_text(s_output_layer, s_buffer);
+  }
+>>>>>>> 41af45cf7af3ffb7574b0e3c674218384f424752
 }
 
 void select_click_handler(ClickRecognizerRef recognizer, void *context) {

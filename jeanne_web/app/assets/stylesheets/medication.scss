@@ -24,7 +24,7 @@
 	}
 
 	.name {
-		width: 150px;
+		width: 120px;
 	}
 
 	.value {
@@ -32,7 +32,7 @@
 	}
 
 	#time-list {
-		width: 120px;
+		width: 60px;
 	}
 
 	::-webkit-input-placeholder {
@@ -42,6 +42,7 @@
 	select {
 		margin-top: 15px;
 	}
+
 
 	// .label {
 	// 	padding: 5px;
@@ -98,7 +99,7 @@
 
 	input[checked="checked"] + label,
 	input:checked + label {
-		background: $peach !important; 
+		background: $blue !important; 
 		color: white !important;
 	}
 
@@ -146,6 +147,7 @@
     	margin-left: 5px;
     	font-size: 20pt;
     	opacity: 0.5;
+    	margin-top: 5px;
     	cursor: pointer;
 
     	&:hover {
@@ -157,14 +159,9 @@
     	display: none
     }
 
-    // &#med- {
-    // 	#update {
-	   //  	display: block;
-    // 	}
-    // 	#display {
-	   //  	display: none;
-    // 	}
-    // }
+    &:nth-child(even) {
+    	background: darken($blue, 8%);
+    }
 }
 
 

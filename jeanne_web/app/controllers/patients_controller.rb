@@ -6,25 +6,29 @@ class PatientsController < ApplicationController
 
 	# Gets the events for today
 	def today
-		times = []
-		Patient.first.medications.each do |med|
+		str = ''
+		Patient.first.medications.order('time asc').each do |med|
 			med_days = decode med.days
-			if not med_days.include? Time.now.wday
+
+			if not med_days.include? Time.now.wday - 1
+				str += "passing  #{med.name}  --- #{med_days} XXX"
 				next
 			end
-			
-			med_times = decode med.times
-			med_times.each do |time|
-				times << {
-					time: time.to_time.to_i,
-					name: med.name,
-					amount: med.amount
-				}
 
+			now = Time.now
+			min = med.time.hour * 60 + med.time.min
+			min_now =  now.hour * 60 + now.min 
+
+			if min < min_now
+				str += "passing time #{med.name}  --- #{min} < #{min_now} XXX\n"
+				next
 			end
+
+			render json: med
+			return
 		end
 
-		render json: times.first
+		render json: {status: 'failure'}
 	end
 
 end
