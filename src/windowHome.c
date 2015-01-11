@@ -2,9 +2,9 @@
 #include <windowHome.h>
 
 // external globals
-Window *s_window_home;
 
 // static globals
+static Window *s_window_home;
 static TextLayer *s_output_layer;
 
 void window_home_load(Window *window) {
@@ -18,7 +18,14 @@ void window_home_load(Window *window) {
   char buffer[20];
   snprintf(buffer,20,"%d",amount);
   text_layer_set_text(s_output_layer, buffer);
-  layer_add_child(window_layer, text_layer_get_layer(s_output_layer));
+  
+  // Display time on main window
+  layer_add_child(window_layer, text_layer_get_layer(s_output_layer));  
+  update_time();
+  
+  // Add it as a child layer to the Window's root layer
+  layer_add_child(window_get_root_layer(window), text_layer_get_layer(s_time_layer));
+
 }
 
 void window_home_unload(Window *window) {
@@ -27,17 +34,15 @@ void window_home_unload(Window *window) {
 }
 
 void window_home_init(Window *window) {
-  // Create home  Window
-  s_window_home = window_create();
-  window_set_click_config_provider(s_window_home, click_config_provider);
-  window_set_window_handlers(s_window_home(WindowHandlers) {
-    .load = window_home_load,
-    .unload = window_home_unload,
+  // Create main Window
+  s_main_window = window_create();
+  window_set_click_config_provider(s_main_window, click_config_provider);
+  window_set_window_handlers(s_main_window, (WindowHandlers) {
+    .load = main_window_load,
+    .unload = main_window_unload,
   });
-  window_stack_push(s_window_home, true);
+  window_stack_push(s_main_window, true);
 }
 
 void window_home_deinit(Window *window) {
-  // Destroy home Window
-  window_destroy(s_window_home);
 }
