@@ -43,6 +43,7 @@ static void init(void) {
 }
 
 static void deinit(void) {
+	tick_timer_service_unsubscribe();
 	window_home_deinit();
 	window_alarm_deinit();
 	window_help_deinit();
