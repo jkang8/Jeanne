@@ -24,7 +24,7 @@ class Medication < ActiveRecord::Base
 	def week_days 
 		map = [ 'Mon', 
 				'Tue', 
-				'Wwed', 
+				'Wed', 
 				'Thu', 
 				'Fri', 
 				'Sat', 
@@ -45,7 +45,7 @@ class Medication < ActiveRecord::Base
 	def time_today
 		return DateTime.now.change({
 			hour: time.hour, 
-			minute: time.min,
+			min: time.min,
 		}).to_i
 	end
 
