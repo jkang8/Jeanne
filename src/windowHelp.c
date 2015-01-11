@@ -23,11 +23,11 @@ void window_help_load(Window *window) {
   
   // @TODO!  Send a message to the web server and wait for an acknowledgement from caregiver
   //Wait 3 seconds
-  psleep(3000); 
+  psleep(30000); 
   vibes_short_pulse();
   window_stack_remove(g_window_home, true);
   window_stack_push(g_window_home, true);
-  APP_LOG(APP_LOG_LEVEL_INFO, "push: help window");
+  APP_LOG(APP_LOG_LEVEL_INFO, "push: home window");
 }
 
 void window_help_unload(Window *window) {
