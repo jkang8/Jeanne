@@ -2,5 +2,5 @@
 
 extern void window_timer_load(Window *window);
 extern void window_timer_unload(Window *window);
-extern void window_timer_init(Window *window);
-extern void window_timer_deinit(Window *window);
+extern void window_timer_init();
+extern void window_timer_deinit();

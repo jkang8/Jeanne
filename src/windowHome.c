@@ -1,6 +1,7 @@
 #include <pebble.h>
 #include <windowHome.h>
 #include <recieve.h>
+#include <tickHandler.h>
 
 // external globals
 
@@ -36,13 +37,13 @@ void window_home_unload(Window *window) {
 
 void window_home_init(Window *window) {
   // Create main Window
-  s_main_window = window_create();
-  window_set_click_config_provider(s_main_window, click_config_provider);
-  window_set_window_handlers(s_main_window, (WindowHandlers) {
-    .load = main_window_load,
-    .unload = main_window_unload,
+  s_window_home = window_create();
+  window_set_click_config_provider(s_window_home, click_config_provider);
+  window_set_window_handlers(s_window_home, (WindowHandlers) {
+    .load = window_home_load,
+    .unload = window_home_unload,
   });
-  window_stack_push(s_main_window, true);
+  window_stack_push(s_window_home, true);
 }
 
 void window_home_deinit(Window *window) {
