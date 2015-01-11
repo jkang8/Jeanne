@@ -42,7 +42,7 @@ void window_home_load(Window *window) {
 }
 
 void window_home_unload(Window *window) {
-  accel_tap_service_unsubscribe(tap_handler);
+  accel_tap_service_unsubscribe();
   // Destroy output TextLayer
   text_layer_destroy(g_main_layer);
   
@@ -51,7 +51,6 @@ void window_home_unload(Window *window) {
 void window_home_init(Window *window) {
   // Create main Window
   s_window_home = window_create();
-  window_set_click_config_provider(s_window_home, click_config_provider);
   window_set_fullscreen(s_window_home,true);
   window_set_window_handlers(s_window_home, (WindowHandlers) {
     .load = window_home_load,
