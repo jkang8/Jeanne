@@ -5,4 +5,4 @@ extern void window_home_unload(Window *window);
 extern void window_home_init();
 extern void window_home_deinit();
 
-TextLayer *g_main_layer;
+extern TextLayer *g_main_layer;

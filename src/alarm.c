@@ -7,7 +7,7 @@
 #define day TODAY
 
 WakeupId s_wakeup_id;
-extern TextLayer *s_output_layer;
+extern TextLayer *g_main_layer;
 Window *s_ty_window;
 
 void wakeup_handler(WakeupId id, int32_t reason) {
@@ -21,17 +21,17 @@ void wakeup_handler(WakeupId id, int32_t reason) {
   static char s_buffer[64];
   int number_pills = persist_read_int(PERSIST_KEY_AMOUNT);
   snprintf(s_buffer, sizeof(s_buffer), "Take %d %s as soon as possible.", number_pills, drugs);
-  text_layer_set_background_color(s_output_layer, GColorWhite);
-  text_layer_set_text_color(s_output_layer, GColorBlack);
-  text_layer_set_text_alignment(s_output_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_output_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
-  text_layer_set_text(s_output_layer, s_buffer);
+  text_layer_set_background_color(g_main_layer, GColorWhite);
+  text_layer_set_text_color(g_main_layer, GColorBlack);
+  text_layer_set_text_alignment(g_main_layer, GTextAlignmentLeft);
+  text_layer_set_font(g_main_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
+  text_layer_set_text(g_main_layer, s_buffer);
   
-  s_output_layer = text_layer_create(GRect(0, 10, 20, 10));
-  text_layer_set_text(s_output_layer, "Taken ->");
+  g_main_layer = text_layer_create(GRect(0, 10, 20, 10));
+  text_layer_set_text(g_main_layer, "Taken ->");
   
-  s_output_layer = text_layer_create(GRect(0, 20, 20, 10));
-  text_layer_set_text(s_output_layer, "Snooze ->");
+  g_main_layer = text_layer_create(GRect(0, 20, 20, 10));
+  text_layer_set_text(g_main_layer, "Snooze ->");
   
   //vibrates the watch
   vibes_long_pulse();
@@ -51,7 +51,7 @@ void check_wakeup() {
     // Show how many seconds to go
     static char s_buffer[64];
     snprintf(s_buffer, sizeof(s_buffer), "Take %d %s!", number_pills, drugs);
-    text_layer_set_text(s_output_layer, s_buffer);
+    text_layer_set_text(g_main_layer, s_buffer);
   }
 }
 
@@ -62,9 +62,9 @@ void select_click_handler(ClickRecognizerRef recognizer, void *context) {
 	// Open a thank you window
 	s_ty_window = window_create();
 	//add bitmap smiley face
-	s_output_layer = text_layer_create(GRect(0, 10, 20, 10));
-	text_layer_set_font(s_output_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
-	text_layer_set_text(s_output_layer, "Thank you!");
+	g_main_layer = text_layer_create(GRect(0, 10, 20, 10));
+	text_layer_set_font(g_main_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
+	text_layer_set_text(g_main_layer, "Thank you!");
 	//Move back to main window after 5 seconds?
 }
 
@@ -90,7 +90,7 @@ void up_click_handler(ClickRecognizerRef recognizer, void *context) {
     persist_write_int(PERSIST_KEY_WAKEUP_ID, s_wakeup_id);
 
     // Prepare for waking up later
-    text_layer_set_text(s_output_layer, "An alarm will go off in 5 seconds.");
+    text_layer_set_text(g_main_layer, "An alarm will go off in 5 seconds.");
 	}
 }
 
