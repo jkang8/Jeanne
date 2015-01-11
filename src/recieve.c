@@ -7,12 +7,12 @@ void receive_key_value(Tuple *t) {
   switch(t->key) {
     case 0:
       persist_write_int(PERSIST_KEY_TIME, t->value->int32);
-  	  make_wakeup(persist_read_int(PERSIST_KEY_TIME));
-	  //make_wakeup(time(NULL)+5);
+  	  //make_wakeup(persist_read_int(PERSIST_KEY_TIME));
+	  make_wakeup(time(NULL)+5);
 	  char buffer[100];
       snprintf(buffer, 100, "time value = %d",(int)persist_read_int(PERSIST_KEY_TIME));
       APP_LOG(APP_LOG_LEVEL_INFO, buffer);
-      snprintf(buffer, 100, "time curr = %d",(int)time(NULL));
+      snprintf(buffer, 100, "time curr =  %d",(int)time(NULL));
       APP_LOG(APP_LOG_LEVEL_INFO, buffer);
       break;
     case 1:
