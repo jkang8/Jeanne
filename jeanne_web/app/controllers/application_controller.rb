@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
         medication = Medication.new 
         medication.name = 'Viagra'
         medication.description = 'Long White Pill'
-        medication.times = ['12:30', '15:20'].to_json
+        medication.time = Time.now
         medication.days = [0,1,2,3,4,5,6,7].to_json
         medication.patient = patient
         medication.amount = 2

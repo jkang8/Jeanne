@@ -35,6 +35,22 @@ class Medication < ActiveRecord::Base
 	def everyday?
 		week_days.count > 6
 	end
+
+	def time_today
+		return DateTime.now.change({
+			hour: time.hour, 
+			minute: time.min,
+		}).to_i
+	end
+
+	def to_json(options)
+		return {
+			status: 'success',
+			time: time_today,
+			name: name,
+			amount: amount
+		}.to_json
+	end
 	
 
 end

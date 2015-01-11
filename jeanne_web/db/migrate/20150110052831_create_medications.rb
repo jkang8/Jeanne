@@ -5,7 +5,7 @@ class CreateMedications < ActiveRecord::Migration
 	  t.string :description
 	  t.integer :amount
 	  t.belongs_to :patient
-	  t.string :times
+	  t.time :time
 	  t.string :days
 
       t.timestamps

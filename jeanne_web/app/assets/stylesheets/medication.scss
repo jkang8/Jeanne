@@ -17,12 +17,30 @@
 		// line-height: 100%;
 	}
 
+
+
+	.amount: {
+		width: 30px;
+	}
+
+	.name {
+		width: 120px;
+	}
+
 	.value {
 		color: $peach;
 	}
 
+	#time-list {
+		width: 60px;
+	}
+
 	::-webkit-input-placeholder {
 	   color: white;
+	}
+
+	select {
+		margin-top: 15px;
 	}
 
 
@@ -52,7 +70,7 @@
         border: 1px solid $peach;
 
         &#medication_times {
-            width: 70px;
+            width: 90px;
         }
     }
 
@@ -79,9 +97,14 @@
 
 	}
 
+	input[checked="checked"] + label,
 	input:checked + label {
-		background: $peach !important; 
+		background: $blue !important; 
 		color: white !important;
+	}
+
+	.button {
+		line-height: 100%;
 	}
 
 	[for=all] {
@@ -124,6 +147,7 @@
     	margin-left: 5px;
     	font-size: 20pt;
     	opacity: 0.5;
+    	margin-top: 5px;
     	cursor: pointer;
 
     	&:hover {
@@ -135,14 +159,9 @@
     	display: none
     }
 
-    // &#med- {
-    // 	#update {
-	   //  	display: block;
-    // 	}
-    // 	#display {
-	   //  	display: none;
-    // 	}
-    // }
+    &:nth-child(even) {
+    	background: darken($blue, 8%);
+    }
 }
 
 

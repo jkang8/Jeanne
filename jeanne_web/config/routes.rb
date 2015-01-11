@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get 'today' => 'patients#today'
 
+  get 'delete_med' => 'medications#delete'
+
   resources 'patients', :only => [:new, :create]
   resources 'medications'
 

@@ -28,6 +28,9 @@
 
 
 coffee:
+	#################################
+	# Menu bar
+	#################################
 	$('#main-menu .bar ').click ->
 		minimize = $(this).find('.minimize')
 		value = minimize.attr('value') != 'true' ? 'true' : 'false'
@@ -41,14 +44,69 @@ coffee:
 			$(this).removeClass('spin')
 		, 1000
 
+	#################################
+	# Initialize Timepicker
+	#################################
+	$('.timepicker').timepicker()
 
-	$('#medication_times').timepicker()
-
-
+	#################################
+	# New / Edit Medication
+	#################################
 	$('.medication #new').click ->
-		$(this).hide()
-		$(this).siblings('#update').show()
+		$(this).toggle()
+		$(this).siblings('#update').toggle()
 
 	$('.medication #edit').click ->
-		$(this).parent('.medication').find('#display').hide()
-		$(this).parent('.medication').find('#update').show()
+		$(this).parent('.medication').find('#display').toggle()
+		$(this).parent('.medication').find('#update').toggle()
+
+	$('.medication #delete').click ->
+		$.ajax
+			url: 'delete_med'
+			data: 
+				id: $(this).attr('value')
+			success: (data)=>
+				$(this).closest('.medication').remove()
+
+	#################################
+	# Week Day Selector
+	#################################
+	days = []
+	$('#week-box label').click ->	
+		id = $(this).attr('for')
+		val = $(this).attr('value')
+		if val in days 
+			days.splice days.indexOf(Number(val)), 1
+		else
+			days.push Number(val)
+
+		$(this).closest('.medication').
+			find('#medication_days').
+			val(JSON.stringify(days))
+
+
+	$('.for-all').click ->	
+		console.log(days.length)
+		if days.length >= 7
+			days = []
+			$(this).siblings('input').attr('checked', false)
+		else 
+			days = [0,1,2,3,4,5,6]
+			$(this).siblings('input').attr('checked', true)
+
+		$(this).closest('.medication').
+			find('#medication_days').
+			val JSON.stringify(days)
+
+	#################################
+	# Form submit
+	#################################
+	$('.medication').find('input[type=submit]').click ->
+		medication = $(this).closest('.medication')
+		form = $(this).closest('form')
+		form.ajaxForm (data) =>
+			$(data).insertBefore medication
+
+		medication
+			.find('#new').click()
+

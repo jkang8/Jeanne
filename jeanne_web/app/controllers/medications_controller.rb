@@ -6,12 +6,12 @@ class MedicationsController < ApplicationController
 		@medication.amount = params[:medication][:amount]
 		@medication.name = params[:medication][:name]
 		@medication.days = params[:medication][:days]
-		@medication.times = params[:medication][:times]
+		@medication.time = params[:medication][:time]
 		@medication.patient_id = params[:medication][:patient_id]
 		@medication.save
 
-		render json: @medication
-		# redirect_to '/home'
+		# render json: @medication
+		render @medication
 	end
 
 	def update
@@ -20,5 +20,11 @@ class MedicationsController < ApplicationController
 		@medication.update! params[:medication]
 
 		redirect_to '/home'
+	end
+
+	def delete
+		medication = Medication.find params[:id]
+		medication.destroy!
+		render text: 'success'
 	end
 end

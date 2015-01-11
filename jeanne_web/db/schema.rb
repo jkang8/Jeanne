@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20150110052831) do
     t.string   "description"
     t.integer  "amount"
     t.integer  "patient_id"
-    t.string   "times"
+    t.time     "time"
     t.string   "days"
     t.datetime "created_at"
     t.datetime "updated_at"
