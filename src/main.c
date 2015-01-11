@@ -5,10 +5,51 @@
 #include <recieve.h> 
 #include <windowHome.h>
 #include <windowTimer.h>
+
+static Window *s_main_window;
+static TextLayer *s_output_layer;
+static WakeupId s_wakeup_id;
+
+static void wakeup_handler(WakeupId id, int32_t reason) {
+  // The app has woken!
+  text_layer_set_text(s_output_layer, "Wakey wakey!");
+}
+
+static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
+  ;
+}
+
+static void click_config_provider(void *context) {
+  // Register the ClickHandlers
+  window_single_click_subscribe(BUTTON_ID_SELECT, select_click_handler);
+}
+
+
+static void main_window_load(Window *window) {
+  Layer *window_layer = window_get_root_layer(window);
+  GRect window_bounds = layer_get_bounds(window_layer);
+
+  // Create output TextLayer
+  s_output_layer = text_layer_create(GRect(0, 0, window_bounds.size.w, window_bounds.size.h));
+  text_layer_set_text_alignment(s_output_layer, GTextAlignmentCenter);
+  text_layer_set_text(s_output_layer, "Press SELECT to schedule a Wakeup.");
+  layer_add_child(window_layer, text_layer_get_layer(s_output_layer));
+}
+
+static void main_window_unload(Window *window) {
+  // Destroy output TextLayer
+  text_layer_destroy(s_output_layer);
+}
  
 static void init(void) {
   // Initialize windows
-  window_home_init();
+  s_main_window = window_create();
+  window_set_click_config_provider(s_main_window, click_config_provider);
+  window_set_window_handlers(s_main_window, (WindowHandlers) {
+    .load = main_window_load,
+    .unload = main_window_unload,
+  });
+  window_stack_push(s_main_window, true);
 
   // Subscribe to Wakeup API
   wakeup_service_subscribe(wakeup_handler);
@@ -45,7 +86,7 @@ static void init(void) {
 }
 
 static void deinit(void) {
-	window_home_deinit();
+  window_destroy(s_main_window);
 }
 
 int main(void) {
