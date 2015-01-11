@@ -32,7 +32,7 @@ void window_help_load(Window *window) {
   s_help_layer = text_layer_create(GRect(0, 0, window_bounds.size.w, window_bounds.size.h));
   text_layer_set_text_alignment(s_help_layer, GTextAlignmentCenter);
   text_layer_set_font(s_help_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
-  text_layer_set_text(s_help_layer, "Help is on the way!");
+  text_layer_set_text(s_help_layer, "Help is on the way!  Tap to dismiss.");
   
   layer_add_child(window_layer, text_layer_get_layer(s_help_layer)); 
   
