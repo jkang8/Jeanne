@@ -126,7 +126,7 @@ void window_alarm_unload(Window *window) {
 void window_alarm_init(Window *window) {
   // Create alarm Window
   g_window_alarm = window_create();
-  window_set_window_handlers(s_window_alarm, (WindowHandlers) {
+  window_set_window_handlers(g_window_alarm, (WindowHandlers) {
     .load = window_alarm_load,
     .unload = window_alarm_unload
   });
