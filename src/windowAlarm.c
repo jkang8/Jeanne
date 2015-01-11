@@ -35,6 +35,7 @@ static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
 	psleep(300); 
 	window_stack_remove(g_window_home,true);
 	window_stack_push(g_window_home,true);
+	APP_LOG(APP_LOG_LEVEL_INFO, "push: home window");
 }
 
 static void down_click_handler(ClickRecognizerRef recognizer, void *context) {

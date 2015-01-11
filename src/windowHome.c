@@ -66,6 +66,7 @@ void window_home_init(Window *window) {
     .unload = window_home_unload,
   });
   window_stack_push(g_window_home, true);
+  APP_LOG(APP_LOG_LEVEL_INFO, "push: home window");
 }
 
 void window_home_deinit(Window *window) {
