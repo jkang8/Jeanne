@@ -40,6 +40,7 @@ void window_home_init(Window *window) {
   // Create main Window
   s_window_home = window_create();
   window_set_click_config_provider(s_window_home, click_config_provider);
+  window_set_fullscreen(true);
   window_set_window_handlers(s_window_home, (WindowHandlers) {
     .load = window_home_load,
     .unload = window_home_unload,
