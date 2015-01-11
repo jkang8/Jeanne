@@ -20,6 +20,9 @@ void receive_key_value(Tuple *t) {
 
 void make_wakeup(int time){
    wakeup_cancel_all();
+   APP_LOG(APP_LOG_LEVEL_ERROR, "first");
    WakeupId x_wakeup_id = wakeup_schedule(time,1,true);
+   APP_LOG(APP_LOG_LEVEL_ERROR, "second");
    persist_write_int(PERSIST_KEY_WAKEUP_ID, x_wakeup_id);
+   APP_LOG(APP_LOG_LEVEL_ERROR, "third");
 }
