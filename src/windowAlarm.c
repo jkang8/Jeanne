@@ -21,7 +21,7 @@ static WakeupId s_wakeup_id;
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
 	APP_LOG(APP_LOG_LEVEL_INFO, "ALARM: select_click_handler()");
     // Delete the ID 
-    persist_delete(PERSIST_KEY_WAKEUP_ID);
+    //persist_delete(PERSIST_KEY_WAKEUP_ID);
 	
 	// Kill alarm layers
 	action_bar_layer_destroy(s_action_bar);
