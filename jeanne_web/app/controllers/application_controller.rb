@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
         redirect_to ''
     end
 
+    def index
+        render "index", :layout => false
+    end
+
 
     def home
         @user = user
@@ -62,7 +66,7 @@ class ApplicationController < ActionController::Base
         end
 
         patient = Patient.new
-        patient.name = "Cara Jeanne"
+        patient.name = "Gramma Gale"
         patient.birthdate = '12/12/1930'.to_date
         patient.save
 
@@ -72,16 +76,6 @@ class ApplicationController < ActionController::Base
         caregiver.email= 'aprowe@ucsc.edu'
         caregiver.patient = patient
         caregiver.save
-
-
-        medication = Medication.new 
-        medication.name = 'Viagra'
-        medication.description = 'Long White Pill'
-        medication.time = Time.now
-        medication.days = [0,1,2,3,4,5,6,7].to_json
-        medication.patient = patient
-        medication.amount = 2
-        medication.save
 
 
         alert = Alert.new 
