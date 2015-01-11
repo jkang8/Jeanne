@@ -21,7 +21,7 @@ static void main_window_load(Window *window) {
   int amount = persist_read_int(PERSIST_KEY_AMOUNT);
   char buffer[20];
   snprintf(buffer,20,"%d",amount);
-  text_layer_set_text(s_output_layer, amount);
+  text_layer_set_text(s_output_layer, buffer);
   layer_add_child(window_layer, text_layer_get_layer(s_output_layer));
 }
 
