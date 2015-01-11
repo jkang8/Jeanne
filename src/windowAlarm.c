@@ -85,8 +85,8 @@ void window_alarm_load(Window *window) {
   // Set the click config provider:
   action_bar_layer_set_click_config_provider(s_action_bar, click_config_provider);
   // Set the icons
-//  action_bar_layer_set_icon(s_action_bar, BUTTON_ID_SELECT, &my_icon_previous);
-//  action_bar_layer_set_icon(s_action_bar, BUTTON_ID_DOWN, &my_icon_next);
+  action_bar_layer_set_icon(s_action_bar, BUTTON_ID_SELECT, RESOURCE_ID_IMAGE_NEXT);
+  action_bar_layer_set_icon(s_action_bar, BUTTON_ID_DOWN, RESOURCE_ID_IMAGE_SNOOZE);
 
   // Create alarm TextLayer
   static char s_buffer[64];
