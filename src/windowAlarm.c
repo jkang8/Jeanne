@@ -6,7 +6,7 @@
 // external globals
 
 // static globals
-Window *s_window_alarm;
+Window *g_window_alarm;
 
 static TextLayer *s_alarm_layer;
 static TextLayer *s_taken_layer;
@@ -123,7 +123,7 @@ void window_alarm_unload(Window *window) {
 
 void window_alarm_init(Window *window) {
   // Create alarm Window
-  s_window_alarm = window_create();
+  g_window_alarm = window_create();
   window_set_window_handlers(s_window_alarm, (WindowHandlers) {
     .load = window_alarm_load,
     .unload = window_alarm_unload
