@@ -1,6 +1,6 @@
 #include <pebble.h>
 #include <windowHome.h>
-#include <receive.h>
+#include <recieve.h>
 #include <TickHandler.h>
 #include <alarm.h>
 
