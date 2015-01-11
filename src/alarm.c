@@ -4,9 +4,7 @@
 #include <windowHome.h>
 
 #define WAKEUP_REASON 0
-//#define number_pills 10
-//#define medication "viagra"
-//#define day TODAY
+#define PERSIST_KEY_WAKEUP_ID 42
 
 WakeupId s_wakeup_id;
 extern TextLayer *s_output_layer;
