@@ -48,7 +48,11 @@ ul {
 }
 
 .clear {
-	clear:both;
+	clear: both;
+	height: 0px !important;
+	padding: 0px !important;
+	margin: 0px !important;
+
 }
 
 /*******************************
@@ -106,3 +110,15 @@ input[type=checkbox] {
 }
 
 
+.delete, #delete {
+	opacity: 0.5;
+	cursor: pointer;
+
+	&:hover {
+		opacity: 1.0;
+	}
+}
+
+.hidden {
+	display:none;
+}

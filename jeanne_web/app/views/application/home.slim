@@ -1,31 +1,49 @@
 
+
+
 #left-content
 	= render Patient.first
 
 
 #content
+	- display = Alert.all.count > 0 ? 'block' : 'none'
+	#alert-box style='display:#{display}'
+		.title.fa.fa-exclamation-circle   Alert
+		- Alert.all.each do | alert | 
+			= render alert
+
+
 	ul#main-menu
-
-
 		li.menu-item
 			= render "partials/menu_item", {title: 'Medication', icon: 'fa-medkit'}
 			.menu-content
 				ul#medication-list
-			        - @patient.medications.each do | med |
+			        - @patient.medications.order('time').each do | med |
 			        	= render med
 			        - medication = Medication.new
 			        - medication.patient = @patient
 			        = render medication
 
-		li.menu-item
-			= render "partials/menu_item", {title: 'Messages', icon: 'fa-comment' }
+		li.menu-item#cam
+			= render "partials/menu_item", {title: 'Live Feed', icon: 'fa-video-camera' }
 			.menu-content
+				img#chair src='assets/chair.gif'
 
 		li.menu-item
 			= render "partials/menu_item", {title: 'Movement', icon: 'fa-arrow-right'}
 			.menu-content
 			
 
+scss:
+	#cam .menu-content {
+		padding: 10px;
+		text-align: center;
+	}
+
+	img#chair {
+		max-width: 100%;
+		height: auto;
+	}
 
 coffee:
 	#################################
@@ -86,7 +104,6 @@ coffee:
 
 
 	$('.for-all').click ->	
-		console.log(days.length)
 		if days.length >= 7
 			days = []
 			$(this).siblings('input').attr('checked', false)
@@ -110,3 +127,55 @@ coffee:
 		medication
 			.find('#new').click()
 
+
+	#################################
+	# Alert box
+	#################################
+	updateDates = (timeout=false)->
+		$('.date').each ->
+			time = $(this).attr('time')*1000
+			$(this).html moment(time).fromNow()
+		if timeout
+			setTimeout updateDates, 5000
+			
+
+
+
+	bindDelete = ->
+		$('#alert-box').find('.delete').unbind('click').click ->
+			$.ajax 
+				url: 'delete_alert'
+				data: 
+					id: $(this).siblings('#alert-id').attr('value')
+				success: =>
+					$(this).closest('.message').slideToggle 400, ->
+						$(this).remove()
+
+					if $('#alert-box .message').length == 1
+						$('#alert-box').slideToggle()
+
+
+	updateAlerts = ->
+		$.ajax 
+			url: 'get_alerts'
+			data:
+				id: $('#alert-box').find('.message').last().attr ('alert-id')
+			success: (data)->
+				if data is 'none'
+					return
+
+				if $('#alert-box .message').length == 0
+					$('#alert-box').slideToggle(true)
+
+				$('#alert-box').append $(data)
+				updateDates()
+				bindDelete()
+
+
+
+		setTimeout updateAlerts, 5000
+			
+	bindDelete()					
+	updateAlerts();
+	updateDates(true);
+			

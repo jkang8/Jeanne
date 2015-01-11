@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get 'today' => 'patients#today'
 
   get 'delete_med' => 'medications#delete'
+  get 'delete_alert' => 'patients#delete_alert'
+  get 'create_alert' => 'patients#create_alert'
+  get 'get_alerts' => 'patients#get_alerts'
 
   resources 'patients', :only => [:new, :create]
   resources 'medications'

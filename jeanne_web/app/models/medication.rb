@@ -22,7 +22,13 @@ class Medication < ActiveRecord::Base
 	end
 
 	def week_days 
-		map = ['M', 'T', 'W', 'Th', 'F', 'S', 'Su']
+		map = [ 'Mon', 
+				'Tue', 
+				'Wwed', 
+				'Thu', 
+				'Fri', 
+				'Sat', 
+				'Sun']
 
 		days = []
 		days_array.each do | day |

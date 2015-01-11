@@ -7,6 +7,13 @@ var xhrRequest = function (url, type, callback) {
   xhr.send();
 };
 
+function send_help() {
+    var url = "http://cara.rowealex.com/create_alert?message=Help+I+Fell+And+My+Dog+Ate+My+Face"
+	xhrRequest(url, 'GET',
+      function(responseText){}
+    );
+}
+
 function locationSuccess(pos) {
   // Construct URL
   var url = "http://api.openweathermap.org/data/2.5/weather?lat=" +
@@ -75,13 +82,14 @@ function getMedication() {
       console.log("Drug is " + drug);
 
       var time = json.time;      
-      console.log("Conditions are " + time);
+      console.log("Time are " + time);
 
       // Assemble dictionary using our keys
       var dictionary = {
-        "KEY_AMOUNT": amount,
         "KEY_DRUG": drug,
-		"KEY_TIME": time 
+        "KEY_TIME": time, 
+        "KEY_AMOUNT": amount
+		
       };
 
       // Send to Pebble
@@ -103,7 +111,6 @@ Pebble.addEventListener('ready',
     console.log("PebbleKit JS ready!");
 
     // Get the initial weather
-    //getWeather();
     getMedication();
   }
 );
@@ -111,8 +118,8 @@ Pebble.addEventListener('ready',
 // Listen for when an AppMessage is received
 Pebble.addEventListener('appmessage',
   function(e) {
-    console.log("AppMessage received!");
-    //getWeather();
+    console.log("AppMessage received:" + e.payload);
+	send_help();
     getMedication();
   }                     
 );

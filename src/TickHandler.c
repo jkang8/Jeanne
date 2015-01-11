@@ -2,10 +2,11 @@
 #include <TickHandler.h>
 TextLayer* s_time_layer;
 
-void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
+void tick_handler_medication(struct tm *tick_time, TimeUnits units_changed) {
 
   // Get medication update every 1 minutes
-  if(tick_time->tm_min % 5 == 0) {
+  APP_LOG(APP_LOG_LEVEL_INFO, "tick_handler_medication()");
+  if(tick_time->tm_min % 1 == 0) {
     // Begin dictionary
     DictionaryIterator *iter;
     app_message_outbox_begin(&iter);

@@ -18,8 +18,8 @@ $peach: $yellow;
 
 
 @mixin border () {
-	border: none;
-	border-radius: 2px;
+	border: 1px solid rgba(white, 0.1);
+	border-radius: 1px;
 }
 
 $padding: 4px;
