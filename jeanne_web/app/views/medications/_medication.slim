@@ -9,7 +9,7 @@ li.medication id='med-#{id}'
 	    	= f.hidden_field :patient_id, value: medication.patient.id
 	    	= f.hidden_field :days, value: '[]'
 	        .item.label Take   
-	        = select(:medication, :amount, (1..100).to_a, {},{class: 'item'})
+	        = select(:medication, :amount, (1..100).to_a, {:include_blank => true},{class: 'item'})
 
 	        = f.text_field :name, {placeholder: 'Medication', class: 'item' }
 

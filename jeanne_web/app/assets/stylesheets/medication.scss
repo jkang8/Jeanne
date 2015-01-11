@@ -24,7 +24,8 @@
 	}
 
 	.name {
-		width: 120px;
+		min-width: 120px;
+		max-width: 400px;
 	}
 
 	.value {

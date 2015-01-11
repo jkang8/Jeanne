@@ -24,15 +24,26 @@
 			        - medication.patient = @patient
 			        = render medication
 
-		li.menu-item
-			= render "partials/menu_item", {title: 'Messages', icon: 'fa-comment' }
+		li.menu-item#cam
+			= render "partials/menu_item", {title: 'Live Feed', icon: 'fa-video-camera' }
 			.menu-content
+				img#chair src='assets/chair.gif'
 
 		li.menu-item
 			= render "partials/menu_item", {title: 'Movement', icon: 'fa-arrow-right'}
 			.menu-content
 			
 
+scss:
+	#cam .menu-content {
+		padding: 10px;
+		text-align: center;
+	}
+
+	img#chair {
+		max-width: 100%;
+		height: auto;
+	}
 
 coffee:
 	#################################
@@ -54,7 +65,7 @@ coffee:
 	#################################
 	# Initialize Timepicker
 	#################################
-	$('.timepicker').timepicker({step:1})
+	$('.timepicker').timepicker()
 
 	#################################
 	# New / Edit Medication
@@ -93,7 +104,6 @@ coffee:
 
 
 	$('.for-all').click ->	
-		console.log(days.length)
 		if days.length >= 7
 			days = []
 			$(this).siblings('input').attr('checked', false)
